@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentelės</title>
+    <!-- CSS - Cascading Stylesheets -->
+    <!-- CSS Stilių integracija galima trimis būdais: -->
+    <!-- inline - stilius priskiriamas prie elemento -->
+    <!-- internal - stilius priskiriamas html dokumente -->
+    <!-- external - stilius priskiriamas atskirame css faile -->
+</head>
+<body style="color:rgb(255, 0, 191); display: flex; gap: 25px;">
+    <!-- teksto lygiavimas žymimas savybe: text-align -->
+    <!-- left - į kairę
+    right - į dešinę
+    center - centruoti
+    justify - išlygiuoti tarp dviejų pusių -->
+
+    <!-- color : nurodoma teksto spalva -->
+    <!-- background-color : nurodoma elemento fono spalva -->
+    <!-- width : nurodomas elemento plotis -->
+    <!-- height : nurodomas elemento aukštis -->
+    <!-- vertical-align (top, bottom, middle) :  nurodos elemente esančio teksto vertikalus lygiavimas -->
+    <table style="width: 550px; background: rgb(254, 255, 221); text-align: left; border: 1px solid black; border-spacing: 0;">
+        <thead>
+            <tr>
+                <!-- th - table head -->
+                <!-- border-left: is kaires -->
+                <!-- border-right: is desines -->
+                <!-- border-top: is virsaus -->
+                <!-- border-bottom: is apacios -->
+                <th style="vertical-align: top; height: 80px; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės pavadinimas</th>
+                <th style="vertical-align: middle; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės aprašymas</th>
+                <th style="vertical-align: bottom; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės sandėlys</th>
+                <th style="background: rgb(255, 220, 198); color:indigo;">Prekės kiekis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tr - table row -->
+            <tr>
+                <!-- td - table data -->
+                <td rowspan="2" style="height: 80px; border-top: 1px solid black; border-right: 1px solid black;">Lorem ipsum dolor sit amet.</td>
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem, ipsum.</td>
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem.</td>
+                <td style="border-top: 1px solid black;">Lorem ipsum dolor sit amet consectetur.</td>
+            </tr>
+            <tr>
+                <!-- td - table data -->
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem ipsum dolor sit amet.</td>
+                <td colspan="2" style="border-top: 1px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iure.</td>
+            </tr>
+            <!-- colspan nurodo kiek stulpelių pločio turėtų užimti elementas -->
+            <!-- rowspan nurodo kiek eilučių aukščio turėtų užimti elementas -->
+        </tbody>
+    </table>
+    <table style="width: 550px; background: rgb(254, 255, 221); text-align: left; border: 1px solid black; border-spacing: 0;">
+        <thead>
+            <tr>
+                <!-- th - table head -->
+                <!-- border-left: is kaires -->
+                <!-- border-right: is desines -->
+                <!-- border-top: is virsaus -->
+                <!-- border-bottom: is apacios -->
+                <th style="vertical-align: top; height: 80px; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės pavadinimas</th>
+                <th style="vertical-align: middle; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės aprašymas</th>
+                <th style="vertical-align: bottom; background: rgb(255, 220, 198); color:indigo; border-right: 1px solid black;">Prekės sandėlys</th>
+                <th style="background: rgb(255, 220, 198); color:indigo;">Prekės kiekis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- tr - table row -->
+            <tr>
+                <!-- td - table data -->
+                <td rowspan="2" style="height: 80px; border-top: 1px solid black; border-right: 1px solid black;">Lorem ipsum dolor sit amet.</td>
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem, ipsum.</td>
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem.</td>
+                <td style="border-top: 1px solid black;">Lorem ipsum dolor sit amet consectetur.</td>
+            </tr>
+            <tr>
+                <!-- td - table data -->
+                <td style="border-top: 1px solid black; border-right: 1px solid black;">Lorem ipsum dolor sit amet.</td>
+                <td colspan="2" style="border-top: 1px solid black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, iure.</td>
+            </tr>
+            <!-- colspan nurodo kiek stulpelių pločio turėtų užimti elementas -->
+            <!-- rowspan nurodo kiek eilučių aukščio turėtų užimti elementas -->
+        </tbody>
+    </table>
+</body>
+</html>
