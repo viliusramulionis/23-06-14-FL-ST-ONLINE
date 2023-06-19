@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <!-- CSS Internal stiliaus integravimas -->
+    <!-- Inline stilius hierarchijoje yra aukščiau nei internal ar external stiliai -->
+    <style>
+        .lentele {
+            border: 1px solid rgb(193, 193, 193);
+            border-bottom: none;
+            border-right: none;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        .lentele th {
+            background-color: rgb(96, 96, 251);
+            color: white;
+            text-transform: uppercase;
+            /* text-transform savybė nurodo teksto konvertavimą */
+            /* lowercase - tekstas iš mažūjų raidžių */
+            /* capitalize - tekstas prasideda didžiąja raide */
+            font-size: 12px;
+            /* font-size savybė nurodo šrifto dydį */
+            height: 25px;
+        }
+
+        .lentele td {
+            height: 30px;
+            border-bottom: 1px solid rgb(193, 193, 193);
+            border-right: 1px solid rgb(193, 193, 193);
+        }
+
+        /* :nth-child() selektorius nurodo kurį dukterinį elementą norime pasirinkti */
+        /* :nth-child(2n) n raidė nuroodo, kad bandome pasirinkti kas kelintą elementą */
+        /* odd - nelyginis skaičius (elemento pozicija) */
+        /* even - lyginis skaičius (elemento pozicija) */
+        .lentele tr:nth-child(even) {
+            background-color: rgb(225, 225, 225);
+        }
+
+        /* pirmo elemento pasirinkimas */
+        /* .lentele tr:first-child {} */
+
+        /* paskutinio elemento pasirinkimas */
+        /* .lentele tr:last-child {} */
+
+        /* taškas žymi klasės atributo selektorių, o po jo rašome klasės pavadinimą */
+        .borderless {
+            border: none;
+        }
+
+        /* css didžiosios ir mažosios raidės sukuria skirtumą */
+        .biggerFontSize {
+            font-size: 18px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <table class="lentele">
+        <thead>
+            <tr>
+                <th>Produktas</th>
+                <th>Kiekis</th>
+                <th>Kaina</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monitorius</td>
+                <td>1</td>
+                <td>100.99 EUR</td>
+                <td>2023-06-19</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="borderless biggerFontSize">
+        <thead>
+            <tr>
+                <th>Produktas</th>
+                <th>Kiekis</th>
+                <th>Kaina</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monitorius</td>
+                <td>1</td>
+                <td>100.99 EUR</td>
+                <td>2023-06-19</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="lentele">
+        <thead>
+            <tr>
+                <th>Vardas ir pavardė</th>
+                <th>Trukmė</th>
+                <th>UŽT padalinys</th>
+                <th>Įstojimo data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vardenis Pavardenis</td>
+                <td>18 sav.</td>
+                <td>Vilnius</td>
+                <td>2023-06-19</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
