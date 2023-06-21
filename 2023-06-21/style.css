@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,300&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto';
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+header {
+    background-color: white;
+    padding: 10px 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    /* gap: 20px; savybė nurodantį tarpus tarp elementų */
+    /* justify-content: center; centruojami dukteriniai elementai
+    justify-content: start; elementai pastatomi i kaire puse (standartinis lygiavimas)
+    justify-content: end; elementai pastatomi i desine puse
+    justify-content: space-around; elementai islygiuojami su tarpais is priekio ir galo
+    justify-content: space-between; elementai islygiuojami su tarpais, taciau nuo tevinio elemento pradzios iki galo */
+
+}
+
+/* header nav ul li {
+    float: left;
+} */
+
+header nav ul li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+}
+
+header nav ul li a:hover {
+    background-color: rgb(252, 221, 255);
+    color: black;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 110px;
+    margin-bottom: -10px;
+}
+
+section {
+    background-color: black;
+    /* background-image: url(1.jpg);
+    background-repeat: no-repeat; */
+    /* background-repeat: no-repeat; //Fono nuotrauka nekartojama */
+    /* background-repeat: repeat-x;  //Fono nuotrauka kartojama į dešinę pusę*/
+    /* background-repeat: repeat-y;  //Fono nuotrauka kartojama žemyn */
+    /* background:  */
+    /* background-size: 1150px 500px; //Pirmoji reikšmė nurodo plotį, antroji aukštį */
+    /* background-size: 100% 50%; //Pirmoji reikšmė nurodo plotį, antroji aukštį */
+
+    /* background-size: cover;
+    background-position: 0 0; */
+    /* //Nurodoma fono nuotraukos pozicija (Galimos neigiamos reikšmės)  */
+    /* background-position: center center; */
+    /* top, left, bottom, right, center */
+    /* background: black url(1.jpg) no-repeat 0 -500px / cover; */
+
+    background: rgb(255, 160, 211);
+    padding: 30px 0;
+}
+
+section h1 {
+    color: white;
+    margin: 0;
+}
+
+section .content {
+    display: flex;
+    padding-top: 20px;
+    gap: 50px;
+}
+
+section .content .image {
+    /* width: 30%; */
+    flex: 0 0 30%;
+}
+
+section .content .text {
+    /* width: 70%; */
+    /* padding-top: 150px; */
+    /* Turinio lygiavimas flex elemento viduje */
+    align-self: center;
+}
+
+section.alternate {
+    background:rgb(162, 54, 111);
+}
+
+section.alternate .content {
+    flex-direction: row-reverse;
+    /* Galimos reikšmės:
+    row - Standartinė reikšmė, lygiavimas eilute
+    row-reverse - Elementų perrikiavimas atvirkštine pozicija eilute
+    column - rikiavimas stulpeliu
+    column-reverse - rikiavimas stulpeliu atvikrščiai  */
+}
+
+/* id selektorius žymimas grotelėmis */
+#titulinis {
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+#apie-mus {
+    background-color:bisque;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
