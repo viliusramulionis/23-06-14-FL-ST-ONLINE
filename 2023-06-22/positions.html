@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozicijos</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .purple {
+            background-color: purple;
+        }
+        /* Standartiškai elementai yra statiniai */
+        /* Standartinis artimiausias realityvus elementas yra body */
+        /* Kai blokinis elementas tampa absoliučiu arba fiksuotu jo plotis nebėra 100%  */
+        .absolute {
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            /* variacijos:
+            top, left, bottom, right */
+        }
+        .right-bottom {
+            right: 150px;
+            bottom: 50px;
+            /* Reikšmės panaikinimas */
+            top: unset;
+            left: unset;
+        }
+        .relative {
+            background-color: gray;
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box2 {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            background: black;
+        }
+
+        .second-absolute {
+            z-index: 1;
+            /* z-index savybė nurodo absoliučioje pozicijoje esančio elemento viršiškumą kitam elementui */
+        }
+    </style>
+</head>
+<body>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia soluta enim molestias fuga possimus iure officia reiciendis cum, iusto praesentium in sed, beatae similique harum maxime repellat placeat, eaque non minus expedita! Et soluta, quas corporis, fugit officia placeat libero nesciunt accusantium voluptates dolores ipsum repellat obcaecati iste illo rerum consequatur amet maiores nemo ea minima nostrum commodi, molestias autem. Ipsum, exercitationem aperiam atque quaerat accusantium eos assumenda consequatur similique fugit distinctio voluptatibus voluptates rem dolores recusandae, est vel! Atque nobis facere fuga eveniet aperiam? Delectus architecto nesciunt nulla quis aut nam incidunt accusantium rem aliquid minima sed laudantium, magni illo illum praesentium corrupti blanditiis consequatur autem molestias. Illo eius excepturi voluptate. Reiciendis id repudiandae optio, laboriosam quae quis sed assumenda totam possimus quibusdam ipsa eius corrupti excepturi beatae debitis natus magni maiores provident. Voluptas ipsa voluptatum necessitatibus doloribus maiores adipisci vero commodi fugiat nesciunt. Blanditiis voluptate laudantium iure aperiam amet, repudiandae nisi nemo debitis ipsam suscipit adipisci quisquam facere quas, minus eius commodi, ipsa doloribus! Voluptates nostrum nobis placeat fugit quos, perferendis illum corrupti sequi. Quis, cumque numquam! Alias, adipisci illum officia in qui quisquam. Aliquam sed ipsa iste nostrum quo dolorum! Quae, quos consectetur. Repudiandae saepe pariatur accusamus.
+    <div class="box absolute"></div>
+    <div class="box blue"></div>
+
+    <div class="relative">
+        <div>
+            <div class="box yellow absolute right-bottom">
+                <div class="box2"></div>
+            </div>
+            <div class="box purple absolute second-absolute"></div>
+            <div class="box blue absolute"></div>
+        </div>
+    </div>
+</body>
+</html>

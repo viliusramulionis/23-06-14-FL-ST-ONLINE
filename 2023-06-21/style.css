@@ -22,6 +22,8 @@ img {
 header {
     background-color: white;
     padding: 10px 0;
+    position: fixed;
+    width: 100%;
 }
 
 header nav ul {
@@ -60,6 +62,10 @@ header .container {
 header .logo {
     width: 110px;
     margin-bottom: -10px;
+}
+
+main {
+    padding-top: 49px;
 }
 
 section {

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <style>
+        /* Šešėliai: 
+           box-shadow: 0 0 0 0;
+           pirma reikšmė - atitraukimas iš kairės
+           antra reikšmė - atitraukimas iš viršaus
+           trečia reikšmė - blur, susiliejimas
+           ketvirta reikšmė - spread
+        */
+        body {
+            margin: 0;
+            background: #f5f5f5;
+            font-family: 'Open Sans', sans-serif;
+        }
+        img {
+            max-width: 100%;
+        }
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .front {
+            background: rgb(242,209,181);
+            background: linear-gradient(167deg, rgba(242,209,181,1) 0%, rgba(247,101,214,1) 28%, rgba(228,22,134,1) 50%, rgba(172,40,129,1) 76%, rgba(73,50,129,1) 100%);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            /* align-content: center; */
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .front img {
+            width: 80px;
+            /* height: 80px; */
+        }
+
+        .back {
+            height: 300px;
+            background: rgb(73,50,129);
+            background: linear-gradient(167deg, rgba(73,50,129,1) 0%, rgba(172,40,129,1) 34%, rgba(247,101,214,1) 67%, rgba(242,209,181,1) 100%);
+            display: flex;
+            align-items: center;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back .content {
+            display: flex;
+            gap: 5px;
+            align-content: center;
+        }
+
+        .back .name {
+            background: white;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            padding: 0 20px 0 50px;
+        }
+
+        .back .name h2 {
+            color: #3c0766;
+            font-weight:800;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .back .name p {
+            margin: 0;
+            text-transform: uppercase;
+            color: gray;
+            text-align: right;
+            /* Tarpams tarp raidžių padidinti */
+            letter-spacing: 4px;
+        }
+
+        .back .separator {
+            width: 6px;
+            background: white;
+        }
+
+        .back .contacts {
+            color: white;
+            font-size: 13px;
+            padding-left: 10px;
+        }
+
+        .back .contacts ul {
+            margin: 0;
+            padding: 5px 0;
+            list-style: none;
+        }
+
+        .back .contacts li {
+            margin: 5px 0;
+        }
+
+        .shadow {
+            width: 300px;
+            height: 0;
+            box-shadow: 0 0 40px 8px;
+            position: absolute;
+            bottom: 12px;
+            left: 22px;
+            transform: rotate(-5deg);
+        }
+
+        .reversed {
+            transform: rotate(5deg);
+            left: unset;
+            right: 22px;
+        }
+
+        .holder {
+            height: 300px;
+            margin: 50px 0 150px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="holder">
+            <div class="shadow"></div>
+            <div class="front">
+                <img src="logo.png" alt="" />
+            </div>
+            <div class="shadow reversed"></div>
+        </div>
+        <div class="holder">
+            <div class="shadow"></div>
+            <div class="back">
+                <div class="content">
+                    <div class="name">
+                        <h2>Vilius Ramulionis</h2>
+                        <p>Lorem Ipsum</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="contacts">
+                        <ul>
+                            <li>+12 45616516</li>
+                            <li>vilius@bit.lt</li>
+                            <li>bit.lt</li>
+                            <li>Baltijos Technologijų Institutas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow reversed"></div>
+        </div>
+    </div>
+</body>
+</html>
