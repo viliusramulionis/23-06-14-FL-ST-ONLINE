@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opacity</title>
+    <style>
+        .ad {
+            background-color: brown;
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            width: 500px;
+            height: 300px;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+        }
+        .hover {
+            background-color: aqua;
+            width: 30px;
+            height: 30px;
+        }
+        .hover:hover .ad {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="hover">
+        <div class="ad"></div>
+    </div>
+</body>
+</html>
