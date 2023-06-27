@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive</title>
+    <style>
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            width: 150px;
+        }
+        .logo img {
+            max-width: 100%;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            width: 25px;
+            display: none;
+        }
+        nav a span {
+            height: 3px;
+            background: black;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media screen and (min-width: 540px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 300px;
+                background: rgb(206, 206, 206);
+                flex-direction: column;
+                height: 100%;
+            }
+            nav ul.active {
+                display: block;
+            }
+            nav a {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li>Titulinis</li>
+                <li>Katalogas</li>
+                <li>Kontaktai</li>
+                <li>Apie Mus</li>
+            </ul>
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

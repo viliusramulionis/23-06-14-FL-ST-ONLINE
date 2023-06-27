@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+}
+.row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.col-1 {
+    width: 8.333333333333333%;
+}
+.col-2 {
+    width: 16.66666666666667%;
+}
+.col-3 {
+    width: 25%;
+}
+.col-4 {
+    width: 33.33333333333333%;
+}
+.col-5 {
+    width: 41.66666666666667%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-7 {
+    width: 58.33333333333333%;
+}
+.col-8 {
+    width: 66.66666666666667%;
+}
+.col-9 {
+    width: 75%;
+}
+.col-10 {
+    width: 83.33333333333333%;
+}
+.col-11 {
+    width: 91.66666666666667%;
+}
+.col-12 {
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    line-height: 1.7;
+}
+
+#home {
+    background: url(../images/hero-bg.png) no-repeat top right;
+}
+
+#home .container {
+    padding-top: 200px;
+}
+
+#home .discount {
+    color: #6c757d;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #eceff2;
+    border-radius: 3px;
+}
+
+#home .green {
+    color: #1ce1ac;
+}
+
+#home h1 {
+    color: #343a40;
+    font-size: 60px;
+    line-height: 1.25;
+    margin-bottom: 0;
+}
+
+#home p {
+    color: #6c757d;
+    font-size: 17px;
+}

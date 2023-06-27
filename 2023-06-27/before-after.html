@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Before - after</title>
+    <style>
+        .box::before {
+            content: "Lorem ipsum";
+            color: white;
+            font-size: 80px;
+            width: 500px;
+            height: 500px;
+            background-color: rgb(138, 10, 10);
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            opacity: 0;
+            background-image: url(1.svg);
+        }
+        .box:hover::before {
+            opacity: 1;
+        }
+
+        .box::after {
+            content: "Pabaigoje įterptas tekstas";
+        }
+        .box p:nth-child(2)::before {
+            content: "Pridėtas tekstas pastraipoje";
+        }
+        a::after {
+            content: "→";
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus sequi asperiores magni, hic placeat optio reprehenderit nemo ratione voluptate commodi sit molestiae unde corrupti amet libero saepe, officiis fugiat, fuga tenetur laborum velit voluptates tempora. Eveniet, praesentium voluptate! Voluptatum nulla esse ducimus quas necessitatibus soluta quaerat, veritatis sed placeat animi?</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus sequi asperiores magni, hic placeat optio reprehenderit nemo ratione voluptate commodi sit molestiae unde corrupti amet libero saepe, officiis fugiat, fuga tenetur laborum velit voluptates tempora. Eveniet, praesentium voluptate! Voluptatum nulla esse ducimus quas necessitatibus soluta quaerat, veritatis sed placeat animi?</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus sequi asperiores magni, hic placeat optio reprehenderit nemo ratione voluptate commodi sit molestiae unde corrupti amet libero saepe, officiis fugiat, fuga tenetur laborum velit voluptates tempora. Eveniet, praesentium voluptate! Voluptatum nulla esse ducimus quas necessitatibus soluta quaerat, veritatis sed placeat animi?</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus sequi asperiores magni, hic placeat optio reprehenderit nemo ratione voluptate commodi sit molestiae unde corrupti amet libero saepe, officiis fugiat, fuga tenetur laborum velit voluptates tempora. Eveniet, praesentium voluptate! Voluptatum nulla esse ducimus quas necessitatibus soluta quaerat, veritatis sed placeat animi?</p>
+        <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, excepturi.</h1>
+        <a href="#">Lorem ipsum dolor sit amet.</a>
+        <a href="#">Lorem ipsum dolor sit amet.</a>
+        <a href="#">Lorem ipsum dolor sit amet.</a>
+        <a href="#">Lorem ipsum dolor sit amet.</a>
+        <a href="#">Lorem ipsum dolor sit amet.</a>
+    </div>
+</body>
+</html>
