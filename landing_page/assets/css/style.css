@@ -1,16 +1,40 @@
+/* Visų elementų selektorius: */
+* {
+    box-sizing: border-box;
+}
+html {
+    --primary-text-color: #6c757d; 
+}
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    color: var(--primary-text-color);
+    line-height: 1.5;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 .container {
+    /* calc() funkcija skirta atlikti artimetiniams veiksmams: sudėtis, atimtis, daugyba dalyba; */
+    /* max-width: calc(1140px - 30px);
+    width: calc(100% - 30px); */
+    /* daugyba: */
+    /* width: calc(100% * 2); */
+    /* dalyba */
+    /* width: calc(100% / 2); */
     max-width: 1140px;
     width: 100%;
     margin: 0 auto;
+    padding: 0 12px;
 }
 .row {
     display: flex;
     gap: 30px;
-    margin-bottom: 30px;
 }
 .col-1 {
     width: 8.333333333333333%;
@@ -57,16 +81,52 @@ p {
     line-height: 1.7;
 }
 
+header {
+    position: absolute;
+    width: 100%;
+    padding: 28px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul {
+    display: flex;
+    gap: 35px;
+}
+
+header nav a {
+    color: var(--primary-text-color);
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+header nav a.active {
+    color: #1ce1ac;
+    position: relative;
+}
+
+header nav a.active::after {
+    content: "";
+    width: 60%;
+    height: 2px;
+    background-color: #1ce1ac;
+    position: absolute;
+    bottom: 0;
+    left: calc((100% - 60%) / 2);
+}
+
 #home {
-    background: url(../images/hero-bg.png) no-repeat top right;
+    background: url(../images/hero-bg.png) no-repeat top right / cover;
 }
 
 #home .container {
-    padding-top: 200px;
+    padding-top: 230px;
 }
 
 #home .discount {
-    color: #6c757d;
     padding: 5px 10px;
     background-color: #f8f9fa;
     border: 1px solid #eceff2;
@@ -81,10 +141,48 @@ p {
     color: #343a40;
     font-size: 60px;
     line-height: 1.25;
-    margin-bottom: 0;
+    margin: 20px 0 0;
 }
 
 #home p {
-    color: #6c757d;
     font-size: 17px;
+}
+
+#home .buttons {
+    display: flex;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+#home .buttons .button {
+    background: rgb(27,212,162);
+    background: linear-gradient(90deg, rgba(27,212,162,1) 0%, rgba(139,241,214,1) 100%);
+    color: white;
+    border-radius: 25px;
+    padding: 10px 25px;
+    display: block;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+#home .buttons .demo {
+    color: #536976;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#home .buttons .demo i {
+    font-size: 30px;
+}
+
+#home .clients {
+    padding: 140px 0 100px;
+}
+#home .clients ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+#home .clients img {
+    height: 38px;
 }
