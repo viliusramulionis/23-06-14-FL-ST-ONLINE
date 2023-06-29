@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>States</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        a:visited {
+            color: tomato;
+        }
+        a:hover {
+            color: red;
+        }
+        h1:active {
+            color: blue;
+        }
+        h1 {
+            color: purple;
+        }
+        input[type="text"] {
+            padding: 5px 10px;
+            width: 100%;
+            background-color: antiquewhite;
+            border: 1px solid gray;
+            border-radius: 3px;
+            font-size: 30px;
+            transition: all .5s ease-in-out;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border: 1px solid rgb(62, 62, 62);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        }
+        input[type="text"]:hover {
+            background-color:chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="https://abcd.com">ABCD</a>
+        <a href="https://google.com">Google</a>
+        <a href="https://15min.lt">15min.lt</a>
+        <a href="https://delfi.lt">delfi.lt</a>
+    </div>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, nisi?</h1>
+    <input type="text">
+</body>
+</html>

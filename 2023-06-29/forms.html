@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input[type="text"] {
+            padding: 5px 10px;
+            width: 100%;
+            /* max-width: 500px;
+            margin: 0 auto;
+            display: block; */
+            background-color: antiquewhite;
+            border: 1px solid gray;
+            border-radius: 3px;
+            font-size: 30px;
+        }
+        /* placeholderio stilizavimas */
+        input::placeholder {
+            color:bisque;
+        }
+        textarea {
+            height: 500px;
+            width: 100%;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <!-- text tipas skirtas priimti bet kokį tekstą -->
+        <label>Jūsų vardas:</label>
+        <input type="text" required>
+        <!-- email tipas skirtas el. pašto adresams -->
+        <label>Jūsų el. pašto adresas</label>
+        <!-- placeholder atributas skirtas atvaizduoti sufleruojamą tektą -->
+        <input type="email" placeholder="vardas@gmail.com" required>
+        <!-- email tipas skirtas slaptažodžiams -->
+        <label>Jūsų slaptažodis</label>
+        <input type="password" required>
+        <label>Spalvos pasirinkimas:</label>
+        <input type="color">
+        <label>Ribotas spalvos pasirinkimas:</label>
+        <input type="color" list="spalvos">
+        <datalist id="spalvos">
+            <option value="#cccccc">Grey</option>
+            <option value="#ffffff">White</option>
+            <option value="#6699cc">Blue</option>
+        </datalist>
+        <label>Pasirinkite datą:</label>
+        <input type="date" disabled>
+        <label>Pasirinkita datą ir laiką</label>
+        <input type="datetime-local">
+        <label>Pasirinkite failą:</label>
+        <input type="file">
+        <h3>Checkboxes</h3>
+        <div>
+            <!-- checkbox pirmas variantas: -->
+            <label>
+                <input type="checkbox"> Susipažinau su vidaus taisyklėmis
+            </label>
+            <!-- checkbox antras variantas -->
+            <label for="agreement">Susipažinau su vidaus taisyklėmis</label>
+            <input type="checkbox" id="agreement">
+            <!-- checked atributas galioja tik checkbox ir radio tipo elementams -->
+            <!-- disabled atributas išjungia elementą ir galioja visiems formos elementams -->
+            <label>
+                <input type="checkbox" checked disabled> 
+                Išjungtas ir pažymėtas laukelis
+            </label>
+        </div>
+        <h3>Radio list</h3>
+        <div>
+            <label>
+                <!-- name atributas priskiriamas prie visų elementų -->
+                <input type="radio" name="vaisiai"> Apelsinai
+            </label>
+            <label>
+                <input type="radio" name="vaisiai"> Bananai
+            </label>
+            <label>
+                <input type="radio" name="vaisiai"> Mandarinai
+            </label>
+        </div>
+        <div>
+            <label>Pasirinkite paštomatą</label>
+            <select>
+                <option value="1">Goštauto g. 12, Vilnius</option>
+                <option value="2">Vilniaus g. 15, Kaunas</option>
+                <option value="3">Ligoninės g. 110, Klaipėda</option>
+            </select>
+        </div>
+        <div>
+            <label>Pasirinkite paštomatą</label>
+            <select multiple>
+                <option value="1">Goštauto g. 12, Vilnius</option>
+                <option value="2">Vilniaus g. 15, Kaunas</option>
+                <option value="3">Ligoninės g. 110, Klaipėda</option>
+            </select>
+        </div>
+        <div>
+            <label>Jūsų komentaras:</label>
+            <textarea></textarea>
+        </div>
+        <!-- submit - formos duomenų pridavimas -->
+        <!-- button - mygtukas perduoda formos duomenis -->
+        <button>Siųsti</button>
+    </form>
+</body>
+
+</html>
