@@ -1,3 +1,21 @@
+/* @font-face {
+    font-family: 'NaujasSriftas';
+    src: url(../fonts/CerebriSansPro-Medium.otf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'NaujasSriftas';
+    src: url(../fonts/CerebriSansPro-Bold.otf);
+    font-weight: 700;
+}
+.test1 {
+    font-weight: 500;
+    font-family: 'NaujasSriftas';
+}
+.test2 {
+    font-weight: 700;
+    font-family: 'NaujasSriftas';
+} */
 /* Visų elementų selektorius: */
 * {
     box-sizing: border-box;
@@ -18,6 +36,14 @@ ul {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    color: #343a40;
 }
 .container {
     /* calc() funkcija skirta atlikti artimetiniams veiksmams: sudėtis, atimtis, daugyba dalyba; */
@@ -81,6 +107,30 @@ p {
     line-height: 1.7;
 }
 
+.gray-bg {
+    background-color: #f8f9fa;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.section-heading h2 {
+    margin: 10px 0 0;
+    font-size: 26px;
+}
+
 header {
     position: absolute;
     width: 100%;
@@ -138,7 +188,6 @@ header nav a.active::after {
 }
 
 #home h1 {
-    color: #343a40;
     font-size: 60px;
     line-height: 1.25;
     margin: 20px 0 0;
@@ -185,4 +234,167 @@ header nav a.active::after {
 
 #home .clients img {
     height: 38px;
+}
+
+#about .image {
+    position: relative;
+    z-index: 0;
+    margin-left: 16px;
+    margin-top: 36px;
+}
+
+#about .image::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: -36px;
+    border-radius: 30% 70% 70% 30% / 50% 50% 50% 50%;
+    height: 100px;
+    width: 100px;
+    background: linear-gradient(to top right, transparent 0%, #1ce1ac 100%);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+#about h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#about p {
+    font-size: 15px;
+}
+
+#about a {
+    font-size: 15px;
+    color: #f24734;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#about a::after {
+    content: "\F135";
+    font-family: 'bootstrap-icons';
+}
+
+#projects .projects-nav {
+    margin-bottom: 50px;
+}
+
+#projects .projects-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#projects .projects-nav a {
+    display: block;
+    background-color: #f8f9fa;
+    font-size: 15px;
+    padding: 6px 14px;
+}
+
+#projects .projects-nav a:hover {
+    background-color: #f1f1f1;
+}
+
+#projects .projects-nav a.active {
+    background-color: #1ce1ac;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+    color: white;
+    border-radius: 3px;
+}
+
+#projects .title {
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.08);
+    padding: 15px 16px;
+}
+
+#projects .title h3 {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+}
+
+#projects .title h6 {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 5px 0 0;
+}
+ 
+#projects img {
+    display: block;
+    border-radius: 4px;
+}
+
+#projects .projects-grid .row:first-child {
+    margin-bottom: 30px;
+}
+
+#testimonial {
+    background-color: rgba(255, 194, 18, 0.25);
+}
+
+#testimonial .card {
+    background: white url(../images/quote.png) no-repeat bottom right / 16%;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+    border-radius: 4px;
+    padding: 24px;
+}
+
+#testimonial .card img {
+    max-width: 55px;
+    border-radius: 50%;
+}
+
+#testimonial .card p {
+    font-weight: 600;
+    font-size: 17px;
+}
+#testimonial .card .author {
+    font-weight: 600;
+}
+#testimonial .dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+#testimonial .dots a {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #343a40;
+    opacity: 0.3;
+    border-radius: 50%;
+}
+
+#testimonial .dots a.active {
+    opacity: 1;
+}
+
+#statistics {
+    text-align: center;
+}
+
+#statistics .number {
+    font-weight: 600;
+    font-size: 38px;
+    color: #343a40;
+}
+
+#statistics .description {
+    text-transform: uppercase;
+}
+
+#team img {
+    background-color: #f2f4f6;
+}
+
+#team .name {
+    font-weight: 600;
+    color: #343a40;
+    line-height: 34px;
 }
