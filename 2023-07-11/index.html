@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=\, initial-scale=1.0"
+		/>
+		<title>Javascript string methods</title>
+	</head>
+	<body>
+		<script>
+			// \ Atvirkščias pasvirasis brūkšnys nurodo "escape" simbolį javascript sintaksėje
+			// let x = "<div class=\"test\"></div>";
+
+			//Template literals (backtick)
+			let vardas = 'Johnny';
+			let pavarde = 'Depp';
+			let sieMetai = 2023;
+			let gimimoMetai = 1970;
+
+			console.log(
+				'Aš esu ' +
+					vardas +
+					' ' +
+					pavarde +
+					'. Man yra ' +
+					(sieMetai - gimimoMetai) +
+					' metai(ų)'
+			);
+
+			console.log(
+				`Aš esu ${vardas} ${pavarde}. Man yra ${
+					sieMetai - gimimoMetai
+				} metai(ų)`
+			);
+
+			// Math biblioteka
+
+			//Mažiausio skaičiaus paieška
+			// console.log(Math.min(52, 12, 8, 44, 13, 22));
+			let min = Math.min(52, 12, 8, 44, 13, 22);
+			console.log(`Mažiausias skaičius yra: ${min}`);
+
+			//Didžiausio skaičiaus paieška
+			let max = Math.max(52, 12, 8, 44, 13, 22);
+			console.log(`Didžiausias skaičius yra: ${max}`);
+
+			//Atsitiktinio skaičiaus generavimas
+			let x = Math.random();
+			console.log(`Atsiktinis skaičius yra ${x}`);
+
+			//Skaičiaus suapvalinimas:
+			//Math.round() - Standartinis skaičiaus apvalinimas iki sveiko skaičiaus
+			console.log(
+				`Suapvalintas skaičius Math.round() metodu: ${Math.round(x)}`
+			);
+
+			//Math.ceil() - Suapvalinimas iki artimiausio didesnio sveikojo skaičiaus esant skaičiui po kablelio
+			console.log(`Suapvalintas skaičius Math.ceil() metodu: ${Math.ceil(x)}`);
+
+			//Math.floor() - Suapvalinimas iki artimiausio mažesnio sveikojo skaičiaus esant skaičiui po kablelio
+			console.log(`Suapvalintas skaičius Math.floor() metodu: ${Math.ceil(x)}`);
+
+			let string = `Suapvalintas skaičius iki dviejų skaičių po kablelio ${x.toFixed(
+				2
+			)}`;
+
+			console.log(string);
+
+			//slice metodas skirtas išimtį dalį teksto iš stringo (Suapvalintas)
+			console.log(string.slice(0, 12));
+
+			console.log(string.slice(34, 44));
+
+			//norint gauti - lio 0.65
+			console.log(string.slice(-8));
+
+			// let naujasStringas = string[0] +
+			// string[1] +
+			// string[2] +
+			// string[3] +
+			// string[4] +
+			// string[5] +
+			// string[6] +
+			// string[7] +
+			// string[8] +
+			// string[9] +
+			// string[10] +
+			// string[11] +
+			// string[12];
+
+			//replace metodas skirtas pakeisti norimą stringo dalį norodytąja
+			console.log(string.replace('skaičius', 'žodis'));
+
+			//replaceAll metodas atlieka tą patį tik su visais rastais simboliais
+			string = string.replaceAll(' ', '-');
+			console.log(string);
+
+			//Skaičiaus konvertavimas į stringą
+			y = x.toString();
+
+			console.log(typeof y);
+
+			y = y.replace('.', ',');
+
+			console.log(y);
+
+			y = y.replace(',', '.');
+
+			//Stringo konvertavimas į skaičių
+			//parseInt() - konvertavimas stringo kuriame yra sveikas skai2ius 5 number duomens tip1
+			//parseFloat() - konvertavimas stringo kuriame skaičius po kablelio
+			console.log(parseFloat(y));
+
+			//ESM konvertavimo variantas:
+			console.log(+y);
+
+			//Stringo konvertavimas į didžiąsias raides
+			console.log(string.toUpperCase());
+
+			console.log(string.toLowerCase());
+
+			console.log(string[0].toUpperCase() + string.substring(1));
+
+			console.log(
+				string.indexOf('skaičius'),
+				string.indexOf('skaičius') + 'skaičius'.length - 1
+			);
+
+			// NaN (Not A Number) - Tikrinimas
+			let nan = NaN;
+			console.log(nan);
+			if (isNaN(nan)) {
+				console.log('Tai nėra skaičius');
+			}
+
+            //Paskutinės pozicijos paieška
+            console.log(string.lastIndexOf('-'));
+
+            console.log('Lorem'.length);
+
+            //Norint patikrinti ar stringe yra tekstas
+            if(string.includes('skaičius')) {
+                console.log('Žodis skaičius yra nurodytame stringe');
+            } else {
+                console.log('Žodis buvo nerastas');
+            }
+		</script>
+	</body>
+</html>
