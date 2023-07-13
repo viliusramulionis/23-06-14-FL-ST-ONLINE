@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For ciklas</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //For ciklo pavyzdys
+        // for (let i = 0; i > 50; i++) {
+        //     console.log('Iteracijos numeris', i);
+        // }
+
+        // Naršyklėje nupieškite linija iš 400 “*”. 
+        // Naudodami css stilių “suskaldykite” liniją taip, kad visos žvaigždutės matytųsi ekrane;
+        // Programiškai “suskaldykite” žvaigždutes taip, kad vienoje eilutėje nebūtų daugiau nei 50 “*”;
+
+        for(let i = 1; i <= 400; i++) {
+            document.write('*');
+
+            if(i % 50 === 0) {
+                document.write('<br />');
+            }
+        }
+
+        //Naudokite funkcija rand(). Sugeneruokite atsitiktinį skaičių nuo 1 iki 6 ir jį atspausdinkite atitinkame h tage. Pvz skaičius 3- rezultatas: <h3>3</h3>
+
+        let numeris = rand(1, 6);
+        document.write(`<h${numeris}>Labas Pasauli</h${numeris}>`);
+
+        //Naudokite funkcija rand(). 
+        //Atspausdinkite 3 skaičius nuo -10 iki 10. Skaičiai mažesni už 0 turi būti žali, 0 - raudonas, didesni už 0 mėlyni.
+        
+        let rezultatas = '';
+
+        for(let i = 0; i < 3; i++) {
+            let skaicius = rand(-10, 10);
+            let spalva = 'blue';
+
+            if(skaicius < 0) 
+                spalva = 'green'; 
+
+            if(skaicius === 0) 
+                spalva = 'red';
+            
+            rezultatas += `<span style="color: ${spalva};">${skaicius}</span>`; 
+        }
+
+        document.write(rezultatas);
+        //console.log(skaicius);
+
+        for(let i = 1; i <= 100; i++) {
+            if(i % 2 !== 0)
+                continue;
+
+            console.log(i + ' Iteracija');
+        }        
+
+        //Sukurkite kintamąjį su stringu: “An American in Paris”. 
+        //Jame ištrinti visas balses. Rezultatą atspausdinti. 
+        //Kodą pakartoti su stringais: “Breakfast at Tiffany's”, 
+        //“2001: A Space Odyssey” ir “It's a Wonderful Life”.
+
+        let stringas = 'An American in Paris';
+        let balses = 'aeiyou';
+        rezultatas = '';             
+        //Sprendimas replaceAll() metodo ir regex pagalba
+        // stringas = stringas.replaceAll(/[aeiyou]/gi, '');
+
+        // document.write(`<h3>${stringas}</h3>`);
+        
+        for(let i = 0; i < stringas.length; i++) {
+            if(!balses.includes(stringas[i].toLowerCase())) 
+                rezultatas += stringas[i];
+        }
+
+        document.write(`<h3>${rezultatas}</h3>`);
+
+        // Sugeneruokite 300 atsitiktinių skaičių nuo 0 iki 300, 
+        // atspausdinkite juos atskirtus tarpais ir suskaičiuokite 
+        // kiek tarp jų yra didesnių už 150.  Skaičiai didesni nei 
+        // 275 turi būti raudonos spalvos.
+
+        rezultatas = '';
+        let skaiciuotuvas = 0;
+
+        for(let i = 0; i < 300; i++) {
+            let skaicius = rand(0, 300);
+
+            if(skaicius > 150)
+                skaiciuotuvas++;
+
+            if(skaicius > 275)
+                rezultatas += `<span style="color: red;">${skaicius}</span> `
+            else
+                rezultatas += skaicius + ' ';
+        }
+
+        document.write(rezultatas);
+        document.write('<h3>Skaičių didesnių nei 150 yra:</h3>', skaiciuotuvas);
+        
+        //Vienoje eilutėje atspausdinkite visus skaičius nuo 
+        //1 iki 3000, kurie dalijasi iš 77 be liekanos. 
+        //Skaičius atskirkite kableliais. Po paskutinio skaičiaus 
+        //kablelio neturi būti. Jeigu reikia, panaudokite css, 
+        //kad visi rezultatai matytųsi ekrane.
+
+        rezultatas = '';
+
+        for(let i = 1; i <= 3000; i++) {
+            // let kablelis = ', ';
+
+            // if(i === 2926)
+            //     kablelis = '';
+
+            if(i % 77 === 0)
+                rezultatas += i + (i === 2926) ? '' : ', ';
+        }
+
+        document.write(`<h4>${rezultatas}</h4>`);
+
+    </script>
+</body>
+
+</html>

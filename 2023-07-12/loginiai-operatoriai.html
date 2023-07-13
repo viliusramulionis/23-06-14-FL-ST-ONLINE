@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        let x = rand(5, 10);
+        let y = rand(15, 20);
+        let z = rand(0, 1);
+        //Atspausdinkite pasisveikinimo tekstą, 
+        //jeigu x yra lygu 10 IR jeigu y yra lygu 15
+        if (x === 10 && y === 15)
+            console.log('Hello World');
+
+        //Atspausdinkite atsisveikinimo tekstą, 
+        //jeigu x yra lygu 10 ARBA jeigu y yra lygu 20
+        if ( x === 10 ||
+             y === 20 ||
+             y === 19 ||
+             y === 18
+        )
+            console.log('Bye World');
+
+        if((x >= 9 && y >= 19) || z === 1)
+            console.log('Sujungta sąlyga');
+    </script>
+</body>
+
+</html>

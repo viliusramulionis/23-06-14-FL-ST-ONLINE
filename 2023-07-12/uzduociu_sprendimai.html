@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduočių sprendimai</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //Ketvirta užduotis
+        // Sukurti kintamąjį su stringu: “Once upon a time in hollywood”. |
+        // Jame visas “o” (didžiąsias ir mažąsias) pakeisti žvaigždutėm “*”.  Rezultatą atspausdinti.
+
+        let string = 'Once upon a time in hollywood';
+        // Regex sprendimas
+        // string = string.replaceAll(/[oO]/g, '*');
+
+        string = string.replaceAll('O', '*').replaceAll('o', '*');
+        console.log(string);
+
+        //Penkta užduotis
+        //Sukurkite keturis kintamuosius kuriems sugeneruokite
+        //atsitiktines reikšmes nuo 0 iki 2.
+        //Suskaičiuokite kiek yra nulių, vienetų ir dvejetų. 
+        let pirmas = rand(0, 2);
+        let antras = rand(0, 2);
+        let trecias = rand(0, 2);
+        let ketvirtas = rand(0, 2);
+
+        let nuliai = 0;
+        let vienetai = 0;
+        let dvejetai = 0;
+
+        console.log(pirmas, antras, trecias, ketvirtas);
+
+        if(pirmas === 0)  {
+            nuliai++; 
+        }
+
+        if(antras === 0)  {
+            nuliai++; 
+        }
+
+        if(trecias === 0)  {
+            nuliai++; 
+        }
+
+        if(ketvirtas === 0)  {
+            nuliai++; 
+        }
+
+        if(pirmas === 1)  {
+            vienetai++; 
+        }
+
+        if(antras === 1)  {
+            vienetai++; 
+        }
+
+        if(trecias === 1)  {
+            vienetai++; 
+        }
+
+        if(ketvirtas === 1)  {
+            vienetai++; 
+        }
+
+        if(pirmas === 2)  {
+            dvejetai++; 
+        }
+
+        if(antras === 2)  {
+            dvejetai++; 
+        }
+
+        if(trecias === 2)  {
+            dvejetai++; 
+        }
+
+        if(ketvirtas === 2)  {
+            dvejetai++; 
+        }
+
+        console.log('Nulių yra:', nuliai, 'Vienetų yra:', vienetai, 'Dvejetų yra:', dvejetai)
+    
+        //Šešta užduotis
+        //Pasinaudokite atsitiktinio skaičiaus generavimo funkcija. 
+        //Sukurkite du kintamuosius ir naudodamiesi funkcija jiems 
+        //priskirkite atsitiktines reikšmes nuo 0 iki 4. 
+        //Didesnę reikšmę padalinkite iš mažesnės. 
+        //Atspausdinkite rezultatą jį suapvalinę iki 2 skaičių 
+        //po kablelio.
+
+        pirmas = rand(0, 4);
+        antras = rand(0, 4);
+        let rezultatas = 0;
+
+        console.log('Gautos reikšmės', pirmas, antras);
+        
+        if(pirmas > antras) {
+            rezultatas = (pirmas / antras).toFixed(2);
+        } else if(pirmas === antras) {
+            rezultatas = 'Reikšmės yra lygios';
+        } else {
+            rezultatas = (antras / pirmas).toFixed(2);
+        }
+
+        console.log(rezultatas);
+        
+        //Septinta užduotis
+        //Naudokite funkciją ir sukurkite tris kintamuosius kuriems 
+        //priskirkite atsitiktines reikšmes nuo 0 iki 25. 
+        //Raskite ir atspausdinkite vidurinę reikšmę.
+
+        pirmas = rand(0, 25);
+        antras = rand(0, 25);
+        trecias = rand(0, 25);
+        
+        console.log('Gautos reikšmės', pirmas, antras, trecias);
+
+        let min = Math.min(pirmas, antras, trecias);
+        let max = Math.max(pirmas, antras, trecias);
+        let mid = pirmas + antras + trecias - (min + max);
+        
+        console.log('Vidurinė reikšmė', mid);
+
+        //Sukurti du kintamuosius. Jiems priskirti 
+        //savo mylimo aktoriaus vardą ir pavardę kaip stringus. 
+        //Sukurti trečią kintamąjį ir jam priskirti stringą, 
+        //sudarytą iš pirmų vardo ir pavardės kintamųjų raidžių. 
+        //Jį atspausdinti.
+
+        let vardas = 'Antonio';
+        let pavarde = 'Banderas';
+        let inicialai = vardas[0] + pavarde[0];
+
+        console.log(inicialai);
+
+        string = 'abcdefghiyjklmnopqrstuvwxz';
+        
+        console.log(
+            string[rand(0, string.length - 1)], 
+            string[rand(0, string.length - 1)], 
+            string[rand(0, string.length - 1)]
+        );
+
+    </script>
+</body>
+
+</html>
