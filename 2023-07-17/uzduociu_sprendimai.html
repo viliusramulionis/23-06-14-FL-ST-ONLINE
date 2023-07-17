@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduočių sprendimai</title>
+    <style>
+        body {
+            /* line-height: 14px; */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        document.write('<h1>Pirma užduotis<h1>');
+        //Nupieškite kvadratą iš “*”, kurio kraštines sudaro 100 “*”. 
+        //Panaudokite css stilių, kad kvadratas ekrane atrodytų kvadratinis.
+        let size = 25;
+        let result = '';
+
+        for(let y = 0; y < size; y++) {
+            for(let x = 0; x < size; x++) {
+                if(y === x || x === (size - y) - 1) {
+                    result += '<span style="color: red;">*</span>';
+                } else {
+                    result += '*';
+                }
+            }
+            result += '<br />';
+        }
+
+        document.write(result);
+
+        document.write('<h1>Antra užduotis<h1>');
+
+        //Metam monetą. Monetos kritimo rezultatą imituojam rand() funkcija, kur 0 yra herbas, o 1 - skaičius. Monetos metimo rezultatus išvedame į ekraną atskiroje eilutėje: “S” jeigu iškrito skaičius ir “H” jeigu herbas. Suprogramuokite tris skirtingus scenarijus kai monetos metimą stabdome:
+            //Iškritus herbui;
+            //Tris kartus iškritus herbui;
+            //Tris kartus iš eilės iškritus herbui;
+        
+        result = '';
+
+        while(true) {
+            let skaicius = rand(0, 1);
+
+            if(skaicius === 0) {
+                result += 'H';
+                break;
+            } else {
+                result += 'S';
+            }
+        }
+
+        document.write(result);
+
+        document.write('<h1>Antra užduotis B)<h1>');
+
+        result = '';
+        let counter = 0;
+
+        while(true) {
+            let skaicius = rand(0, 1);
+
+            if(skaicius === 0) {
+                result += 'H';
+                counter++;
+            } else {
+                result += 'S';
+            }
+
+            if(counter === 3)
+                break;
+        }
+
+        document.write(result);
+
+        document.write('<h1>Antra užduotis C)<h1>');
+        result = '';
+        counter = 0;
+
+        while(true) {
+            let skaicius = rand(0, 1);
+
+            if(skaicius === 0) {
+                result += 'H';
+                counter++;
+            } else {
+                result += 'S';
+                counter = 0;
+            }
+
+            if(counter === 3)
+                break;
+        }
+
+        document.write(result);
+
+        document.write('<h1>2023-07-14 Pirma užduotis<h1>');
+        
+        let kazys = 0;
+        let petras = 0;
+        result = '';
+
+        while(true) {
+            let pp = rand(10, 20);
+            let kp = rand(5, 25);
+            kazys += kp;
+            petras += pp;
+
+            if(pp > kp) {
+                result += 'Partiją laimėjo: Petras <br />';
+            } else if(pp === kp) {
+                result += 'Įvyko lygiosios <br />';
+            } else {
+                result += 'Partiją laimėjo: Kazys <br />';
+            }
+
+            if(kazys >= 222 || petras >= 222) {
+                if(kazys > petras) {
+                    result += 'Žaidimą laimėjo Kazys';
+                } else if(kazys === petras) {
+                    result += 'Žaidimas baigėsi lygiosiomis';
+                } else {
+                    result += 'Žaidimą laimėjo Petras';
+                }
+                break;
+            }
+        }
+
+        document.write(result);
+
+        document.write('<h2>Antra užduotis</h2>');
+
+        let length = 85 * 5;
+        counter = 0;
+
+        for(let i = 0; length > 0; i++) {
+            length -= rand(5, 20);
+            counter++;
+        }
+
+        document.write(`<h3>Įkalti penkis vinis mažais smūgiais prireikė ${counter} smūgių</h3>`);
+
+        length = 85 * 5;
+        counter = 0;
+
+        for(let i = 0; length > 0; i++) {
+            if(rand(0, 1) === 0)
+                length -= rand(5, 20);
+            
+            counter++;
+        }
+
+        document.write(`<h3>Įkalti penkis dideliais mažais smūgiais prireikė ${counter} smūgių</h3>`);
+    </script>
+</body>
+</html>

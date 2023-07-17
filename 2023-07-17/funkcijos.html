@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcijos</title>
+</head>
+<body>
+    <script>
+        let hello = 'Labas Pasauli';
+
+        //Aprašant funkciją yra nurodomi priimami parametrai
+        function multiply(a, b, c) {
+            if(!a || !b || !c)
+                return false;
+
+            console.log(a * b);
+
+            return (a * b) / c;
+        }
+
+        function showSomething(text) {
+            document.write(text);
+        }
+
+        // Funkcijos iššaukimas (Function call), perduodant argumentus
+        multiply(10, 50);
+        multiply(20, 5);
+        let number = multiply(11, 11, 15);
+
+        console.log('Iš funkcijos grąžinta reikšmė:', number);
+
+        showSomething(hello);
+
+        //Arrow function
+
+        let divide = (a, b) => {
+            return a / b;
+        }
+
+        console.log('A dalinta iš B lygu: ', divide(10, 2));
+
+        let sum = (a, b) => a + b;
+
+        console.log('A ir B suma: ', sum(555, 111));
+
+        let addEleven = a => a + 11;
+
+        console.log('Prie A pridėjus 11: ', addEleven(589));
+
+        //Standartinės parametrų reikšmės pagal nutylėjimą
+        function generateText(name = 'Jolanta', lastname = 'Dudienė') {
+            return name + ' ' + lastname;
+        }     
+
+        console.log(generateText('Brad', 'Pitt'));
+
+        //Savaime išssišaukianti funkcija - Self invoking function
+        (function init() {
+            document.write('<h2>Funkcija iššaukta savaime</h2>');
+        })();
+
+
+        //Scopes
+        // Global - globalus kintamasis
+        let helloGlobal = 'Hello World';
+        
+        (function sayHello() {
+            document.write(helloGlobal);
+        })();
+
+        // Block Scope - Tai kas yra tarp riestinių skliaustų
+        const consText = 'Nekintantis tekstas';
+
+        let letText = 'Kintantis tekstas';
+
+        if(true) {
+            let block = 'Sugeneruotas kintamasis';
+            //var variable = 'Var Kintamojo reikšmė';
+        }
+
+        //console.log(variable);
+
+    </script>
+</body>
+</html>
