@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masyvai</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        //Array - Masyvas
+        let array = [0, 'Tekstas', false, undefined, null];
+        console.log(array);
+
+        for(let i = 0; i < array.length; i++) {
+            console.log(array[i]);
+        }
+
+        // For of 
+        for(let value of array) {
+            console.log(value);
+        }
+
+        // For in
+        for(let index in array) {
+            console.log(array[index]);
+        }
+
+        const newArray = [];
+        //Pirmasis būdas pridėti reikšmę į masyvą
+        newArray[0] = 'Hello World';
+        newArray[newArray.length] = 255;
+        newArray[newArray.length] = 355;
+        newArray[newArray.length] = 455;
+        console.log(newArray);
+
+        //Antrasis būdas
+        const anotherArray = [];
+        //Reikšmių pridėjimui į masyvą naudojamas push metodas
+        //Reikšmių kiekis neribojamas
+        anotherArray.push('Goodbye World', 144, 344, false);
+        anotherArray.unshift('Lauke lyja');
+        console.log(anotherArray);
+        
+        const unshiftedArray = [];
+        const wantedValue = 'Elementas kurį noriu pridėti į priekį';
+        unshiftedArray[unshiftedArray.length] = wantedValue;
+
+        for(const value of anotherArray) {
+            unshiftedArray[unshiftedArray.length] = value;
+        }
+
+        console.log(unshiftedArray);
+
+        //Sukurkite 100 elementų masyvą kurio elementų reikšmės būtų atsitiktiniai skaičiai nuo 0 iki 500.
+        //Suskaičiuokite reikšmių sumą.
+
+        const randomArray = [];
+
+        for(let i = 0; i < 100; i++) {
+            randomArray.push(rand(0, 500));
+        }
+
+        let sum = 0;
+
+        for(const value of randomArray) {
+            sum += value;
+        }
+
+        console.log('Reikškmių suma:', sum);
+
+        //Ištrynimas iš masyvo
+        //Nenaudokite šio būdo dirbant su masyvais
+        //delete unshiftedArray[0];
+
+        unshiftedArray.splice(0, 1);
+
+        unshiftedArray.splice(0, 3, 'Lauke sninga', 'Hello World', 145);
+
+        console.log(unshiftedArray);
+
+        const randomNumbers = [];
+        let randomNumbersString = ''; 
+
+        for(let i = 0; randomNumbers.length < 50; i++) {
+            const skaicius = rand(1, 200);
+
+            if(!randomNumbers.includes(skaicius))
+                randomNumbers.push(skaicius);
+        }
+
+        console.log(randomNumbers);
+        console.log(randomNumbers.join(', '));
+
+        function isPrimeNumber(number) {
+            let counter = 0;
+
+            for(let i = 2; i < number; i++) {
+                if(number % i === 0)
+                    counter++;
+            } 
+
+            return counter === 0;
+        }
+
+        const primeNumberArray = [];
+
+        for(const number of randomNumbers) {
+            if(isPrimeNumber(number)) // true or false
+                primeNumberArray.push(number); 
+        }
+
+        console.log(primeNumberArray.join(', '));
+
+    </script>
+</body>
+</html>
