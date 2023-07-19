@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduočių sprendimai</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        
+
+        const array = [];
+
+        for(let i = 0; i < 30; i++) {
+            array[i] = rand(5, 25);
+        }
+
+        document.write('<h2>Pirminis masyvas:</h2>', array);
+
+
+        // Suskaičiuokite kiek masyve yra reikšmių didesnių už 10;
+
+        let counter = 0;
+
+        for(const value of array) {
+            if(value > 10)
+                counter++;
+        }
+
+        document.write('<h3>Reikšmių didesnių nei dešimt yra:</h3>', counter);
+        
+        // Raskite didžiausią masyvo reikšmę ir jos indeksą arba indeksus jeigu yra keli;
+        //let max = 0;
+        let indexes = [];
+
+        // for(const value of array) {
+        //     if(value > max) 
+        //         max = value;
+        // }
+
+        let max = Math.max(...array);
+
+        for(const i in array) {
+            if(array[i] === max)
+                indexes.push(i);
+        }
+
+        document.write(`<h3>Didžiausia reikšmė: ${max}, šios reikšmės indeksas arba indeksai:</h3>`, indexes);
+
+
+        // Suskaičiuokite visų porinių (lyginių) indeksų reikšmių sumą;
+
+        let sum = 0;
+        let evenArray = [];
+        
+        for(const i in array) {
+            if(i % 2 === 0) {
+                sum += array[i];
+                evenArray.push(array[i]);
+            }
+        }
+
+        document.write('<h3>Lyginiai skaičiai:</h3>', evenArray);
+        document.write('<h3>Porinių indeksų reikšmių suma:</h3>', sum);
+
+        // Sukurkite naują masyvą, kurio reikšmės yra 1 uždavinio masyvo reikšmes minus tos reikšmės indeksas;
+
+        const newArray = []; 
+
+        for(const i in array) {
+            newArray[i] = array[i] - i;
+        }
+
+        document.write(`<h4>${newArray}</h4>`);
+
+        // Papildykite masyvą papildomais 10 elementų su reikšmėmis nuo 5 iki 25, kad bendras masyvas padidėtų iki indekso 39;
+
+        for(let i = 0; i < 10; i++) {
+            newArray[newArray.length] = rand(5, 25);
+        }
+
+        document.write(`<h4>${newArray}</h4>`);
+
+        // Iš masyvo elementų sukurkite du naujus masyvus. Vienas turi būti sudarytas iš neporinių indeksų reikšmių, o kitas iš porinių;
+    
+        const first = [];
+        const second = [];
+
+        for(const i in newArray) {
+            if(i % 2 === 0) 
+                first.push(newArray[i]);
+            else 
+                second.push(newArray[i]);
+        }
+
+        // for(let i = 0; i < newArray.length; i++) {
+        //     newArray[i]   
+        // }
+
+        // for(const v of newArray) {
+            
+        // }
+
+        document.write(`<h4>Pirmas masyvas: ${first}</h4>`);
+        document.write(`<h4>Antras masyvas: ${second}</h4>`);
+
+        // Pirminio masyvo elementus su poriniais indeksais padarykite lygius 0 jeigu jie didesni už 15;
+        
+        const tempArray = [...array];
+
+        for(const i in array) {
+            if(i % 2 === 0 && array[i] > 15)
+                array[i] = 0;
+        }
+
+        document.write(`<h4>Nulintas masyvas: ${array}</h4>`);
+
+        // Naudodami funkciją splice() iš masyvo ištrinkite visus elementus kurių reikšmės didesnės už 10;
+
+        // for(const i in array) {
+        //     if(array[i] > 10)
+        //         array.splice(i, 1);
+        // }
+
+        for(let i = tempArray.length - 1; i >= 0; i--) {
+            if(tempArray[i] > 10)
+            tempArray.splice(i, 1);
+        }
+
+        document.write(`<h4>Masyvas su pašalintomis reikšmėmis didesnėmis nei 10: ${tempArray}</h4>`);
+
+        // Naudodami funkciją splice() iš masyvo ištrinkite visus elementus turinčius porinį indeksą;
+
+        for(let i = tempArray.length - 1; i >= 0; i--) {
+            if(i % 2 === 0)
+                tempArray.splice(i, 1);
+        }
+
+        document.write(`<h4>Masyvas su pašalintais lyginiais indeksais: ${tempArray}</h4>`);
+    </script>
+</body>
+</html>

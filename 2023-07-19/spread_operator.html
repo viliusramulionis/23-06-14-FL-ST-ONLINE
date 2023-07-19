@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body>
+    <script>
+        const array = [15, 25, 13, 8, 2, 55];
+
+        function max(...reiksmes) {
+            let max = 0;
+
+            for(const value of reiksmes) {
+                if(value > max)
+                    max = value;
+            }
+
+            return max;
+        }
+
+        console.log(max(...array));
+
+        function joinStrings(...pvz) {
+            return pvz.join(' ');
+        }
+
+        console.log(joinStrings('Vardenis', 'Pavardenis', 'Profesija'));
+
+    </script>
+</body>
+</html>
