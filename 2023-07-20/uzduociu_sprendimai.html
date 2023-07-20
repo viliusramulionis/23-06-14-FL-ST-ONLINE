@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduočių sprendimai</title>
+    <style>
+        body {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. Suskaičiuokite kiek yra kiekvienos raidės.
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        
+        const letters = 'ABCD';
+        const array = [];
+        let A = 0;
+        let B = 0;
+        let C = 0;
+        let D = 0;
+
+        for(let i = 0; i < 200; i++) {
+            const letter = letters[rand(0, letters.length - 1)];
+            array.push(letter);
+
+            if(letter === 'A')
+                A++;
+
+            if(letter === 'B')
+                B++;
+
+            if(letter === 'C')
+                C++;
+
+            if(letter === 'D')
+                D++;
+        }
+
+        document.write(array, A, B, C, D);
+
+        array.sort();
+
+        console.log(array);
+
+        //Sugeneruokite 3 masyvus pagal 1 uždavinio sąlygą. 
+        //Sudėkite masyvus, sudėdami reiksmes pagal atitinkamus indeksus. 
+        //Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) 
+        //reikšmių ir kiek unikalių kombinacijų gavote.
+
+        function generateArray(length) {
+            const array = [];
+            for(let i = 0; i < length; i++) {
+                const letter = letters[rand(0, letters.length - 1)];
+                array.push(letter);
+            }
+
+            return array;
+        }
+
+        const pirmas = generateArray(200);
+        const antras = generateArray(200);
+        const trecias = generateArray(200);
+        const masyvas = [];
+        let counter1 = 0;
+        let counter2 = 0;
+
+        for(const i in pirmas) {
+            const val = pirmas[i] + antras[i] + trecias[i];
+
+            masyvas[i] = val;
+
+            if(val === 'AAA')
+                counter1++;
+
+            if(val === 'BBB')
+                counter1++;
+
+            if(val === 'CCC')
+                counter1++;
+
+            if(val === 'DDD')
+                counter1++;
+
+            if(!masyvas.includes(val))
+                counter2++;
+        } 
+        console.log(masyvas);
+        console.log('Po vieną pasikartojančių reikšmių:', masyvas.length - counter1);
+            
+
+
+        console.log('Unikalios kombinacijos', counter2);
+
+
+    </script>
+</body>
+</html>
