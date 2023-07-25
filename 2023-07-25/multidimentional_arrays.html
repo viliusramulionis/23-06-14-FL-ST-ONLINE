@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daugiamačiai masyvai</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        
+        // const masyvas = [
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        //     [10, 20, 30, 8, 20],
+        // ];
+        // console.log(masyvas);
+        //Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų 
+        //masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
+
+        const masyvas = [];
+        
+        for(let i = 0; i < 10; i++) {
+            masyvas[i] = [];
+            for(let x = 0; x < 5; x++) {
+                // masyvas[i].push(rand(5, 25));
+                masyvas[i][x] = rand(5, 25);
+            }
+        }
+
+        console.log(masyvas);
+
+        //Naudodamiesi 1 uždavinio masyvu:
+        // Suskaičiuokite kiek masyve yra elementų didesnių už 10;
+        // Raskite didžiausio elemento reikšmę;
+        // Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
+        // Visus antro lygio masyvus “pailginkite” iki 7 elementų
+        // Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai 
+        
+        let counter = 0;
+
+        masyvas.filter(value => {
+            const filtered = value.filter(digit => digit > 10);
+            counter += filtered.length;
+        });
+        
+        counter = 0;
+
+        for(const child of masyvas) {
+            for(const value of child) {
+                if(value > 10)
+                    counter++;
+            }
+        }
+
+        console.log('Reikšmių didesnių nei dešimt yra: ', counter);
+        
+        let max = 0;
+
+        for(const child of masyvas) {
+            for(const value of child) {
+                if(value > max)
+                    max = value;
+            }
+        }
+
+        console.log('Didžiausia reikšmė elementuose yra:', max);
+        
+        
+    </script>
+</body>
+</html>
