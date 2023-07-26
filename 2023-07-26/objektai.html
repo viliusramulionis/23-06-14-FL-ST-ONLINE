@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objektai</title>
+</head>
+<body>
+    <script>
+        const object = {
+            //Savybės - properties
+            vardas: 'Vilius',
+            data: '2023-07-26',
+            statusas: false,
+            menesis: 10,
+            zmones: ['Eglė, Juozas, Antanas'],
+            vardas: 'Petras',
+            //Metodai - methods
+            keistiVarda: function(vardas) {
+                this.vardas = vardas;
+            }
+        };
+
+        const object1 = {
+            vardas: 'Vilius',
+            data: '2023-07-26',
+            statusas: false,
+            menesis: 10,
+            zmones: ['Eglė, Juozas, Antanas'],
+            vardas: 'Petras',
+            keistiVarda: function(vardas) {
+                this.vardas = vardas;
+            }
+        };
+
+        const object2 = {
+            vardas: 'Vilius',
+            data: '2023-07-26',
+            statusas: false,
+            menesis: 10,
+            zmones: ['Eglė, Juozas, Antanas'],
+            vardas: 'Petras'
+        };
+
+        object2.keistiVarda = function(vardas) {
+            this.vardas = vardas;
+        }
+
+        const array = ['Test'];
+
+        // console.log(typeof array);
+        // console.log(typeof object);
+
+        console.log(array);
+        // console.log(object);
+
+        // console.log(object.vardas);
+
+        // array['vardas'] = 'Vilius';
+
+        //console.log(object.map(val => val));
+
+        object.menesis = 11;
+
+        object.zmones.map(val => console.log(val));
+
+        const x = 'vardas';
+
+        console.log(object[x]);
+
+        object[x] = 'Antanas';
+
+        console.log(object[x]);
+
+        object.keistiVarda('Adomas');
+        object1.keistiVarda('Adomas');
+        object2.keistiVarda('Adomas');
+
+        console.log(object.vardas);
+        console.log(object1.vardas);
+        console.log(object2.vardas);
+
+        //Chaining - grandininė reakcija
+
+        const object3 = {
+            pet: 'dog',
+            age: 3,
+            setPet: function(pet) {
+                this.pet = pet;
+                return this;
+            },
+            setAge: function(age) {
+                this.age = age;
+            }
+        }
+
+        object3.setPet('cat').setAge(10);
+
+        // let string = 'Labas Pasauli';
+
+        // string = string.replaceAll('a', '-').replaceAll('b', '-');
+
+        // console.log(string);
+
+        console.log(object3);
+    </script>
+</body>
+</html>

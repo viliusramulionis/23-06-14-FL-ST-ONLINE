@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Užduočių sprendimai</title>
+</head>
+<body>
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        const masyvas = [];
+        
+        for(let i = 0; i < 10; i++) {
+            masyvas[i] = [];
+            for(let x = 0; x < 5; x++) {
+                // masyvas[i].push(rand(5, 25));
+                masyvas[i][x] = rand(5, 25);
+            }
+        }
+
+        console.log(masyvas);
+
+        //Naudodamiesi 1 uždavinio masyvu:
+        // Suskaičiuokite kiek masyve yra elementų didesnių už 10;
+        // Raskite didžiausio elemento reikšmę;
+        // Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
+        // Visus antro lygio masyvus “pailginkite” iki 7 elementų
+        // Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai 
+        
+        let counter = 0;
+
+        masyvas.filter(value => {
+            const filtered = value.filter(digit => digit > 10);
+            counter += filtered.length;
+        });
+        
+        counter = 0;
+
+        for(const child of masyvas) {
+            for(const value of child) {
+                if(value > 10)
+                    counter++;
+            }
+        }
+
+        console.log('Reikšmių didesnių nei dešimt yra: ', counter);
+        
+        let max = 0;
+
+        for(const child of masyvas) {
+            for(const value of child) {
+                if(value > max)
+                    max = value;
+            }
+        }
+
+        console.log('Didžiausia reikšmė elementuose yra:', max);
+        
+        //console.log(masyvas);
+        const sums = [];
+        for(let x = 0; x < 5; x++) {
+            sums[x] = 0;
+
+            for(let i = 0; i < masyvas.length; i++) {
+                sums[x] += masyvas[i][x];
+            }
+        }
+
+        console.log(sums);
+        
+        for(const index in masyvas) {
+            for(let i = 5; i < 7; i++) {
+                masyvas[index][i] = rand(5, 25);
+            }
+        }
+
+        const alphabet = [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "I",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+        ];
+
+        const raidziuMasyvas = [];
+
+        for(let i = 0; i < 10; i++) {
+            const number = rand(2, 20);
+            raidziuMasyvas[i] = [];
+
+            for(let x = 0; x < number; x++) {
+                raidziuMasyvas[i][x] = alphabet[rand(0, alphabet.length - 1)];
+            }
+        }
+
+        for(const raides of raidziuMasyvas) {
+            raides.sort();
+        }
+
+        console.log(raidziuMasyvas);
+
+
+        //raidziuMasyvas.sort((a, b) => a.length - b.length);
+        raidziuMasyvas.sort((a, b) => {
+            if (a.includes("K") && !b.includes("K")) return -1;
+                else if (!a.includes("K") && b.includes("K")) return 1;
+                else return a.length - b.length;
+        });
+
+        console.log([...raidziuMasyvas]);
+    </script>
+</body>
+</html>
