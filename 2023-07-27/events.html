@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        /* #result {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 560px;
+            height: 315px;
+            transform: translate(-50%, -50%);
+        } */
+    </style>
+</head>
+<body>
+    <!-- Inline variantas: -->
+    <button onclick="run()">Paspausk mane</button>
+    <!-- addEventListener variantas: -->
+    <button class="eventListenerBtn">Paspausk mane</button>
+    <!-- property variantas: -->
+    <button class="propertyBtn">Paspausk mane</button>
+    <div>
+        <h2>Įvykių detalės</h2>
+        <button class="eventBtn1" onclick="detales(event);">Įvykio detalės #1</button>
+
+        <button class="eventBtn2" onclick="dateles(event);">Įvykio detalės #2</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function run() {
+            const res = document.querySelector('#result');
+            
+            res.innerHTML = `
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5u7euN1HTuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            `;          
+        }
+
+        document.querySelector('.eventListenerBtn').addEventListener('click', run);
+
+        document.querySelector('.propertyBtn').onclick = run;
+
+        function detales(e) {
+            console.log(e.target);
+            console.log(e);
+
+            e.target.textContent += ' + Paspaustas'; 
+        }
+    </script>
+</body>
+</html>

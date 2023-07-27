@@ -134,7 +134,15 @@ p {
 header {
     position: absolute;
     width: 100%;
-    padding: 28px 0;
+    padding: 28px 0 20px;
+    z-index: 100;
+    transition: all ease-in-out 300ms;
+}
+
+header.scrolled {
+    position: fixed;
+    background: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 header .container {
@@ -397,4 +405,41 @@ header nav a.active::after {
     font-weight: 600;
     color: #343a40;
     line-height: 34px;
+}
+
+.video-modal {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    display: none;
+}
+
+.video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-container video {
+    width: 700px;
+}
+
+.video-container .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: rgba(255,255,255, 0.3);
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: #5f5f5f;
+    line-height: 32px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1;
 }
