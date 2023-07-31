@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeouts</title>
+</head>
+<body>
+    <script>
+        //1s = 1000ms
+        setTimeout(() => {
+            //Po penkių atliekamas veiksmas
+            console.log('Tekstas');
+        }, 5000);
+
+        let time = 800;
+
+        const interval = setInterval(() => {
+            //Kas vieną sekundę atliekas veiksmas
+            console.log(time);
+            time--;
+            //clearInterval(interval);
+        }, 1000);
+
+        
+        
+    </script>
+</body>
+</html>

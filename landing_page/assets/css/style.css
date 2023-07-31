@@ -345,6 +345,10 @@ header nav a.active::after {
     background-color: rgba(255, 194, 18, 0.25);
 }
 
+#testimonial .quotes {
+    overflow: hidden;
+}
+
 #testimonial .card {
     background: white url(../images/quote.png) no-repeat bottom right / 16%;
     box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
