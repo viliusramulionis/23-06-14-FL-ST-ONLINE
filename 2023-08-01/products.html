@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Products</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	</head>
+	<body>
+        <div class="container">
+            <form onsubmit="saveProduct(event);">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label>Pavadinimas:</label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label>Kaina:</label>
+                            <input type="text" name="price" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label>Likutis:</label>
+                            <input type="text" name="stock" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label>Prekinis ženklas:</label>
+                            <input type="text" name="brand" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label>Kategorija:</label>
+                            <select name="category" class="form-control">
+                                <option>smartphones</option>
+                                <option>laptops</option>
+                                <option>fragrances</option>
+                                <option>skincare</option>
+                                <option>groceries</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary mt-4">Pridėti prekę</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pavadinimas</th>
+                        <th>Kaina</th>
+                        <th>Likutis</th>
+                        <th>Prekinis ženklas</th>
+                        <th>Kategorija</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <script src="products.js"></script>
+		<script>
+			//CRUD:
+			//CREATE - Sukurti įrašą
+			//READ - Peržiūrėti įrašą
+			//UPDATE - Atnaujinti įrašą
+			//DELETE - Ištrinti įrašą
+
+            function showList() {
+                let html = '';
+                
+                products.map(product => {
+                    html += `
+                        <tr>
+                            <td>${product.id}</td>
+                            <td>${product.title}</td>
+                            <td>${product.price}</td>
+                            <td>${product.stock}</td>
+                            <td>${product.brand}</td>
+                            <td>${product.category}</td>
+                            <td>
+                                <button onclick="deleteProduct(event, ${product.id});" class="btn btn-danger">Ištrinti</button>    
+                                <button class="btn btn-primary">Redaguoti</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                document.querySelector('tbody').innerHTML = html;
+            }
+
+            function saveProduct(e) {
+                e.preventDefault();
+
+                // let title = document.querySelector('[name="title"]').value;
+                // let price = document.querySelector('[name="price"]').value;
+                // let stock = document.querySelector('[name="stock"]').value;
+                // let brand = document.querySelector('[name="brand"]').value;
+                // let category = document.querySelector('[name="category"]').value;
+
+                // console.log(title, price, stock, brand, category);
+
+                //FormData
+                // const data = new FormData(e.target);
+
+                // for(const input of data.entries()) {
+                //     console.log(input);
+                // }
+
+                const product = {
+                    id: products[products.length - 1] ? products[products.length - 1].id + 1 : 1
+                };
+
+                document.querySelectorAll('form .form-control').forEach(el => {
+                    product[el.getAttribute('name')] = el.value;
+                });
+
+                products[products.length] = product;
+                
+                showList();
+            }
+
+            function deleteProduct(e, id) {
+                //e.target.parentElement.parentElement.remove();
+
+                if(!confirm('Ar tikrai norite ištrinti šį įrašą?'))
+                    return;
+                    
+                //e.target.parentElement.parentElement.remove();
+                const index = products.findIndex(val => val.id === id);
+                products.splice(index, 1);
+                showList();
+            }
+
+            showList();
+		</script>
+	</body>
+</html>
