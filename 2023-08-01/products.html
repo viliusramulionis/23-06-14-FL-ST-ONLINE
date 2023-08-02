@@ -79,6 +79,8 @@
 			//UPDATE - Atnaujinti įrašą
 			//DELETE - Ištrinti įrašą
 
+            let editMode = false;
+
             function showList() {
                 let html = '';
                 
@@ -92,8 +94,8 @@
                             <td>${product.brand}</td>
                             <td>${product.category}</td>
                             <td>
-                                <button onclick="deleteProduct(event, ${product.id});" class="btn btn-danger">Ištrinti</button>    
-                                <button class="btn btn-primary">Redaguoti</button>
+                                <button onclick="deleteProduct(${product.id});" class="btn btn-danger">Ištrinti</button>    
+                                <button onclick="editProduct(event, ${product.id})" class="btn btn-primary">Redaguoti</button>
                             </td>
                         </tr>
                     `;
@@ -133,7 +135,7 @@
                 showList();
             }
 
-            function deleteProduct(e, id) {
+            function deleteProduct(id) {
                 //e.target.parentElement.parentElement.remove();
 
                 if(!confirm('Ar tikrai norite ištrinti šį įrašą?'))
@@ -143,6 +145,62 @@
                 const index = products.findIndex(val => val.id === id);
                 products.splice(index, 1);
                 showList();
+            }
+
+            function editProduct(e, id) {
+                if(editMode)
+                    return;
+
+                editMode = true;
+
+                const form = document.querySelector('form').cloneNode(true);
+
+                form.onsubmit = e => {
+                    e.preventDefault();
+
+                    const index = products.findIndex(data => data.id === id); 
+
+                    e.target.querySelectorAll('input').forEach(el => {
+                        products[index][el.getAttribute('name')] = el.value;
+                    });
+
+                    products[index].category = e.target.querySelector('select').value;
+
+                    editMode = false;
+
+                    showList();
+                }
+
+                //const el = document.createElement('div');
+
+                //el.textContent = 'Dinamiškai patalpintas tekstas';
+
+                // document.querySelector('.container').appendChild(form);
+
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.setAttribute('colspan', 7);
+                form.querySelector('button').textContent = 'Redaguoti prekę';
+                
+                //Įdėjimas į elemento vidų už visų dukterinių elementų
+                tr.appendChild(td);
+                td.appendChild(form);
+                
+                const product = products.find(data => data.id === id);
+
+                // form.querySelector('[name="title"]').value = product.title;
+
+                form.querySelectorAll('input').forEach(el => {
+                    el.value = product[el.getAttribute('name')];
+                });
+
+                form.querySelectorAll('select option').forEach(el => {
+                    if(el.textContent === product.category)
+                        el.setAttribute('selected', 'selected');
+                });
+
+                //Turinio įdėjimas už specifinio elemento
+                e.target.parentElement.parentElement.after(tr);
             }
 
             showList();
