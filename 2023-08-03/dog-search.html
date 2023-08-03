@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Search Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 700px;">
+        <div id="app">
+            <form class="input-group" onsubmit="getPhoto(event);">
+                <input type="text" class="form-control" placeholder="Enter dog breed">
+                <button class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script>
+        function getPhoto(e) {
+            e.preventDefault();
+            const breed = e.target.querySelector('input').value.toLowerCase();
+            //https://dog.ceo/api/breed/buhund/norwegian/images/random
+            //https://dog.ceo/api/breed/bulldog/boston/images/random
+            fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+            .then(resp => resp.json())
+            .then(resp => {
+                if(resp.status != 'success')
+                    return;
+
+                document.querySelector('#result').innerHTML = `<img src="${resp.message}" alt="" />`;
+            });
+        }
+    </script>
+</body>
+</html>
