@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <script>
+        //Callback hell
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => {
+        //     fetch('https://jsonplaceholder.typicode2.com/')
+        //     .then(resp => resp.text())
+        //     .then(resp => {
+        //         fetch('https://jsonplaceholder.typicode2.com/')
+        //         .then(resp => resp.text())
+        //         .then(resp => {
+        //             fetch('https://jsonplaceholder.typicode2.com/')
+        //             .then(resp => resp.text())
+        //             .then(resp => {
+                        
+        //             });
+        //         });
+        //     });
+        // });
+
+        // async function actions() {
+        //     let data = await fetch('https://jsonplaceholder.typicode.com/');
+        //     data = await data.text();
+
+        //     data = await fetch('https://jsonplaceholder.typicode.com/');
+        //     data = await data.text();
+
+        //     data = await fetch('https://jsonplaceholder.typicode.com/');
+        //     data = await data.text();
+
+        //     data = await fetch('https://jsonplaceholder.typicode.com/');
+        //     data = await data.text();
+
+        //     data = await fetch('https://jsonplaceholder.typicode.com/');
+        //     data = await data.text();
+
+        // }
+
+        //actions();
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => console.log('Baigta'));
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => console.log('Baigta'));
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => console.log('Baigta'));
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => console.log('Baigta'));
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => resp.text())
+        // .then(resp => console.log('Baigta'));
+
+
+
+        // console.log('Operacijos pradžia');
+        
+        // let x = 'Tuščias stringas';
+
+        // fetch('https://jsonplaceholder.typicode.com/')
+        // .then(resp => {
+        //     console.log(resp)
+        //     console.log('Operacijos pabaiga');
+        //     x = 'Operacijos pabaiga';
+        // });
+
+        // document.write(x);
+
+
+        const fetch2 = (digit) => {
+            return new Promise((pavyko, nepavyko) => {
+                setTimeout(() => {
+                    //Uzklausa
+                    if(digit) 
+                        pavyko('Veiksmas pavyko');
+                    else
+                        nepavyko('Veiksmas nepavyko');
+                }, 5000);
+            });
+        }
+
+        // async function getData() {
+        //     document.write('<h1>Headeris</h1>');
+
+        //     fetch2(1)
+        //     .then(resp => document.write(resp));
+
+        //     document.write('<h2>Footeris</h2>');
+        // }
+        
+        // getData();
+        
+        async function getData() {
+            try {
+                const data = await fetch2(1);
+                console.log(data);
+            } catch(err) {
+                console.log('Įvyko klaida', err);
+            }
+        }
+
+        getData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log('Operacijos pradžia');
+
+        // const pazadas = new Promise((pavyko, nepavyko) => {
+        //     setTimeout(() => {
+        //         pavyko();
+        //     }, 5000);
+        // });
+
+        // pazadas.then(() => {
+        //     console.log('Operacija baigta');
+        // });
+
+        // console.log('Operacijos pabaiga');
+
+        const fetch2 = (digit) => {
+            return new Promise((pavyko, nepavyko) => {
+                setTimeout(() => {
+                    //Uzklausa
+                    if(digit) 
+                        pavyko('Veiksmas pavyko');
+                    else
+                        nepavyko('Veiksmas nepavyko');
+                }, 5000);
+            });
+        }
+
+        //Callback
+        fetch2(1)
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err))
+        .finally(() => {
+            console.log('Operacija baigta');
+        });
+
+        
+        
+    </script>
+</body>
+</html>
