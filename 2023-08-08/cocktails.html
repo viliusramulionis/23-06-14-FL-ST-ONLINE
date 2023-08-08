@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktails</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        img {
+            max-width: 100%;
+        }
+        .container {
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <form onsubmit="getData(event);" id="form">
+            <div class="input-group mb-3">
+                <input type="text" id="search" class="form-control" placeholder="Įveskite ieškomo gėrimo pavadinimą">
+                <button class="btn btn-primary">Ieškoti</button>
+            </div>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        const form = document.getElementById('form');
+
+        function getData(e) {
+            e.preventDefault();
+            const value = document.getElementById('search').value;
+
+            fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + value)
+            .then(resp => resp.json())
+            .then(resp => {
+                const result = document.getElementById('result');
+
+                if(!resp.drinks)
+                    return result.innerHTML = `<div class="alert alert-warning">Pagal įvestą užklausą nepavyko rasti jokių rezultatų.</div>`;
+
+                let html = `<div class="row">`;
+                //console.log(resp.drinks);
+                resp.drinks.map(data => {
+                    html += `<div class="col-4">
+                                <a href="#" onclick="getDrink(event, ${data.idDrink})">
+                                    <img src="${data.strDrinkThumb}" alt="${data.strDrink}" />
+                                    <h3>${data.strDrink}</h3>
+                                </a>
+                            </div>`;
+                });
+
+                html += `</div>`;
+
+                result.innerHTML = html;
+
+                form.style.display = 'block';
+            });
+        }
+
+        function getDrink(e, id) {
+            e.preventDefault();
+
+            fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + id)
+            .then(resp => resp.json())
+            .then(resp => {
+                const result = document.getElementById('result');
+                const data = resp.drinks[0];
+                let ingredients = '';
+                console.log(data);
+
+                for(let i = 1; i <= 15; i++) {
+                    if(data['strIngredient' + i])
+                        ingredients += `<li>${data['strIngredient' + i]} ${data['strMeasure' + i] ? data['strMeasure' + i] : ''}</li>`;
+                }
+
+                result.innerHTML = `
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="${data.strDrinkThumb}" alt="${data.strDrink}" />  
+                        </div>
+                        <div class="col-6">
+                            <h2>${data.strDrink}</h2>
+                            <ul>
+                                <li>${data.strAlcoholic}</li>
+                                <li>${data.strCategory}</li>
+                                <li>${data.strGlass}</li>
+                            </ul>
+                            <p>${data.strInstructions}</p>
+                            <h4>Ingridientai</h4>
+                            <ul>
+                                ${ingredients}
+                            </ul>
+                            <a href="#" onclick="getData(event)">Atgal į sąrašą</a>
+                        </div>
+                    </div>
+                `;
+
+                form.style.display = 'none';
+            });
+        }
+        
+    </script>
+</body>
+</html>
