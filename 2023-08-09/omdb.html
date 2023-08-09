@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="result" class="container"></div>
+    <script>
+        function getData() {
+            fetch('https://www.omdbapi.com/?apikey=2e9b1f46&s=marvel')
+            .then(resp => resp.json())
+            .then(resp => {
+                console.log(resp);
+                const result = document.getElementById('result');
+
+                let html = `<div class="row">`;
+                resp.Search.map(data => {
+                    html += `<div class="col-4">
+                                <a href="#">
+                                    <img src="${data.Poster}" alt="${data.Title}" />
+                                    <h3>${data.Title}</h3>
+                                </a>
+                            </div>`;
+                });
+
+                html += `</div>`;
+
+                result.innerHTML = html;
+            });
+        }
+
+        getData();
+
+    </script>
+</body>
+</html>

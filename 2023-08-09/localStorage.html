@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+        }
+
+        .box-red {
+            background-color: red;
+        }
+
+        .box-green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn-primary" data-id="1">Pirmas</button>
+    <button class="btn btn-danger" data-id="2">Antras</button>
+    <button class="btn btn-success" data-id="3">Trečias</button>
+    <div id="result"></div>
+    <script>
+        function generateBox(id) {
+            const box = document.createElement('div');
+            box.classList.add('box');
+
+            if(id == 2)
+                box.classList.add('box-red');
+
+            if(id == 3)
+                box.classList.add('box-green');
+            
+            // document.getElementById('result').innerHTML = '';
+            document.getElementById('result').replaceChildren(box);
+        }
+        
+        document.querySelectorAll('button').forEach(el => {
+            //Data atributo paėmimas
+            // console.log(el.dataset.id);
+            //Data atributo priskyrimas
+            // el.dataset.naujas = 'Reiksme';
+
+
+            el.addEventListener('click', () => {
+                //document.getElementById('result').innerHTML = '<div class="box"></div>'
+                generateBox(el.dataset.id);
+
+                localStorage.setItem('page', el.dataset.id);
+            });
+        });
+
+        const page = localStorage.getItem('page');
+
+        if(page) {
+            generateBox(page);
+        }
+    </script>
+</body>
+</html>
