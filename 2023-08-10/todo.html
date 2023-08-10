@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,18 @@
         .container {
             max-width: 700px;
         }
+
+        .done {
+            text-decoration: line-through;
+        }
+
+        #result li {
+            list-style: none;
+            padding: .5rem 0;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <form onsubmit="saveTask(event)">
@@ -24,12 +35,13 @@
     <script>
         function saveTask(e) {
             e.preventDefault();
-
-            const value = e.target.querySelector('input').value;
+            const input = e.target.querySelector('input');
+            const value = input.value;
             const task = {
                 name: value,
                 done: false
             };
+
             //localStorage duomenu paemimas
 
             //duomenu konvertavimas is json formato
@@ -39,31 +51,96 @@
             //duomenu issaugojimas localStorage
 
             let data = localStorage.getItem('data'); //null
-            
-            if(!data) {
-                data = [task];
-            } else {
+
+            if (e.target.dataset.edit) {
+                //Redagavimas
                 data = JSON.parse(data);
-                data[data.length] = task;
+                data[e.target.dataset.id].name = value;
+                e.target.querySelector('button').textContent = 'Add';
+                delete e.target.dataset.id;
+                delete e.target.dataset.edit;
+            } else {
+                if (!data) {
+                    data = [task];
+                } else {
+                    data = JSON.parse(data);
+                    data[data.length] = task;
+                }
             }
 
+            //Duomenu issaugojimas
             localStorage.setItem('data', JSON.stringify(data));
+
+            //Įvedimo laukelio išvalymas
+            input.value = '';
+
+            //Duomenų atvaizdavimas
+            showTasks();
         }
 
         function showTasks() {
             let data = localStorage.getItem('data');
 
-            if(!data) 
+            if (!data)
                 return document.getElementById('result').innerHTML = `
                     <div class="alert alert-warning">Tasks are empty</div>
                 `; //Atvaizduojame žinutę
-            
+
             data = JSON.parse(data);
-            data = data.map(val => `<li>${val.name}</li>`);
+            data = data.map((val, index) => `<li>
+                                                <div class="d-flex justify-content-between">
+                                                    <div ${val.done ? 'class="done"' : ''} onclick="setDone(${index});">${val.name}</div>
+                                                    <div class="d-flex justify-content-between gap-3">
+                                                        <button onclick="showEdit(${index}, '${val.name}')" class="btn btn-warning">Edit</button>
+                                                        <button onclick="deleteTask(${index})" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </li>`);
             document.getElementById('result').innerHTML = data.join('');
+        }
+
+        //let edited = false;
+
+        function showEdit(index, name) {
+            // if(edited)
+            //     return;
+
+            // edited = true;
+            const form = document.querySelector('form');
+            form.querySelector('input').value = name;
+            form.querySelector('button').textContent = 'Edit';
+            form.dataset.edit = true;
+            form.dataset.id = index;
+        }
+
+        function setDone(index) {
+            //localStorage duomenu paemimas
+            //duomenu konvertavimas is json formato
+            //reiksmes pakeitimas
+            //duomenu uzsifravimas
+            //duomenu issaugojimas localStorage
+
+            let data = JSON.parse(localStorage.getItem('data'));
+            data[index].done = !data[index].done;
+            localStorage.setItem('data', JSON.stringify(data));
+            showTasks();
+        }
+
+        function deleteTask(index) {
+            //localStorage duomenu paemimas
+            //duomenu konvertavimas is json formato
+            //reiksmes pakeitimas
+            //duomenu uzsifravimas
+            //duomenu issaugojimas localStorage
+
+            let data = JSON.parse(localStorage.getItem('data'));
+            data.splice(index, 1);
+            localStorage.setItem('data', JSON.stringify(data));
+            showTasks();
         }
 
         showTasks();
     </script>
 </body>
+
 </html>
