@@ -1,0 +1,25 @@
+.calculator {
+  margin: 0 auto;
+  max-width: 320px;
+}
+.calculator button {
+  width: 100px;
+  height: 100px;
+}
+
+.calculator .actions {
+  display: flex;
+  gap: 10px;
+}
+
+.calculator .actions button {
+  width: 75px;
+  height: 50px;
+}
+
+.calculator .digits {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
