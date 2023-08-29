@@ -1,0 +1,4 @@
+CREATE - POST
+READ - GET (Body užklausoje nėra persiunčiamas)
+UPDATE - PUT / PATCH
+DELETE - DELETE
