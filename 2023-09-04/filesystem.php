@@ -31,3 +31,17 @@ foreach($files as $file) {
 //https://www.php.net/manual/en/function.unlink.php
 unlink('15min.html');
 
+?>
+
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+        <?php 
+            foreach($files as $file) {
+                echo "<tr>$file</tr>";
+            }
+        ?>
+    </tbody>
+</table>
