@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "password": "1234",
+            "email": "jonas@gmail.com"
+        }
+    ],
+    "accounts": [
+        {
+            "id": 1,
+            "name": "Jonas",
+            "last_name": "Petraitis",
+            "ak": 321265165165,
+            "iban": "LT5156165165156",
+            "ammount": 0
+        }
+    ]
+}
