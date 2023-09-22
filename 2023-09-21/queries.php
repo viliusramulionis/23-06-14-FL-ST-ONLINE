@@ -22,12 +22,18 @@ if(isset($_POST['name']) AND strlen($_POST['name']) > 3) {
 
 //Įrašo atnaujinimas
 if(isset($_GET['action']) AND $_GET['action'] === 'mark') {
+    echo "UPDATE tasks SET status = !status WHERE id = " . $_GET['id'];
     $db->query("UPDATE tasks SET status = !status WHERE id = " . $_GET['id']);
 }
 
 //Įrašo trynimas
 if(isset($_GET['action']) AND $_GET['action'] === 'delete') {
     $db->query("DELETE FROM tasks WHERE id = " . $_GET['id']);
+}
+
+//Įrašo trynimas
+if(isset($_GET['action']) AND $_GET['action'] === 'task') {
+    $db->query("SELECT * FROM tasks WHERE id = " . $_GET['id']);
 }
 
 $data = false;
