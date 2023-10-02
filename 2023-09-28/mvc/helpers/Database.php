@@ -21,6 +21,10 @@ class Database {
         }
     }
 
+    public function __destruct() {
+        self::$db->close();
+    }
+
     public function getAll() {
         $result = self::$db->query("SELECT * FROM $this->table");
         return $result->fetch_all(MYSQLI_ASSOC);
