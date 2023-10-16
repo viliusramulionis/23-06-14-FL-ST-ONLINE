@@ -15,7 +15,7 @@
                     @endif
 
                     @foreach($data as $playlist)
-                        <li>{{$playlist->name}}</li>
+                        <li><a href="/playlist/{{$playlist->id}}">{{$playlist->name}}</a></li>
                     @endforeach
                 </div>
             </div>

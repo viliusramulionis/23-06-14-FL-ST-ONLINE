@@ -15,6 +15,8 @@
                 </label>
             </div>
         @endforeach
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <button class="btn btn-primary">Save</button>
     </form>
 </div>
 @endsection
