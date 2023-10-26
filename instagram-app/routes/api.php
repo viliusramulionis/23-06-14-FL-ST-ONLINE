@@ -16,6 +16,7 @@ use App\Http\Controllers\PostsController;
 */
 
 // Route'ų grupė
+// Route::middleware('auth:sanctum')->prefix('post')->group(function() {
 Route::prefix('post')->group(function() {
     Route::get('/', [PostsController::class, 'index']);
     Route::get('/{id}', [PostsController::class, 'show']);
@@ -28,7 +29,7 @@ Route::prefix('post')->group(function() {
 
 Route::prefix('auth')->group(function() {
     Route::post('login', [AuthController::class, 'login']);
-    Route::middleware('auth')->get('check', function() {
-        return auth()->user();
-    });
+    Route::post('register', [AuthController::class, 'register']);
+    Route::middleware('auth:sanctum')->get('check', [AuthController::class, 'check']);
+    Route::middleware('auth:sanctum')->get('logout', [AuthController::class, 'logout']);
 });
