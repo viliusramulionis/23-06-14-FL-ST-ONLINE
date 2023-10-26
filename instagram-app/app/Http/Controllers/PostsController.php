@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
+use App\Models\Like;
 
 class PostsController extends Controller
 {
@@ -13,9 +15,12 @@ class PostsController extends Controller
     public function index()
     {
         try {
-            return Post::all();
+            $data = Post::with('likes')->with('comments')->get();
+
+            return $data;
         } catch(\Throwable $e) {
-            return response('Įvyko klaida', 500);
+            echo $e->getMessage();
+            //return response('Įvyko klaida', 500);
         }
     }
 
@@ -66,6 +71,36 @@ class PostsController extends Controller
             Post::find($id)->delete();
             return 'Viskas pavyko';
         } catch(\Throwable $e) {
+            return response('Įvyko klaida', 500);
+        }
+    }
+
+    // Naujo komentaro pridėjimas
+    public function comment(
+        string $id,
+        Request $request
+    ) {
+        try {
+            Comment::create([
+                'user_id' => 1,
+                'post_id' => $id,
+                'text' => $request->text
+            ]);
+        } catch(\Throwable $e) {
+            return response('Įvyko klaida', 500);
+        }
+    }
+
+
+    // Naujo laiko pridėjimas
+    public function like( string $id ) {
+        try {
+            Like::create([
+                'user_id' => 1,
+                'post_id' => $id
+            ]);
+        } catch(\Throwable $e) {
+            echo $e->getMessage();
             return response('Įvyko klaida', 500);
         }
     }

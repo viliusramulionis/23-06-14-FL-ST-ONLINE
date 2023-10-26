@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 
@@ -15,8 +15,20 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/post', [PostsController::class, 'index']);
-Route::post('/post', [PostsController::class, 'store']);
-Route::get('/post/{id}', [PostsController::class, 'show']);
-Route::put('/post/{id}', [PostsController::class, 'update']);
-Route::delete('/post/{id}', [PostsController::class, 'destroy']);
+// Route'ų grupė
+Route::prefix('post')->group(function() {
+    Route::get('/', [PostsController::class, 'index']);
+    Route::get('/{id}', [PostsController::class, 'show']);
+    Route::post('/', [PostsController::class, 'store']);
+    Route::post('/comment/{id}', [PostsController::class, 'comment']);
+    Route::post('/like/{id}', [PostsController::class, 'like']);
+    Route::put('/{id}', [PostsController::class, 'update']);
+    Route::delete('/{id}', [PostsController::class, 'destroy']);
+});
+
+Route::prefix('auth')->group(function() {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::middleware('auth')->get('check', function() {
+        return auth()->user();
+    });
+});

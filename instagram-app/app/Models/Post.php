@@ -15,4 +15,12 @@ class Post extends Model
         'user_id',
         'location',
     ];
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
 }
