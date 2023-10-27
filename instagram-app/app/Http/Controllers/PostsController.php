@@ -15,7 +15,10 @@ class PostsController extends Controller
     public function index()
     {
         try {
-            $data = Post::with('likes')->with('comments')->get();
+            $data = Post::with('likes')
+                        ->with('comments')
+                        ->with('users:id,name,photo')
+                        ->get();
 
             return $data;
         } catch(\Throwable $e) {
@@ -87,6 +90,7 @@ class PostsController extends Controller
                 'text' => $request->text
             ]);
         } catch(\Throwable $e) {
+
             return response('Įvyko klaida', 500);
         }
     }

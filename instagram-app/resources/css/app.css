@@ -4,12 +4,30 @@
 
 body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif
+}
+
+input, textarea, select {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif
 }
 
 img {
     max-width: 100%;
 }
 
-.container {
+.d-flex {
     display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.stream {
+    max-width: 630px;
+    width: 100%;
+}
+
+main {
+    width: 100%;
 }

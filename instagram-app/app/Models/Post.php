@@ -16,6 +16,10 @@ class Post extends Model
         'location',
     ];
 
+    public function users() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }
