@@ -1,5 +1,6 @@
 .commentForm {
     display: flex;
+    position: relative;
 }
 .commentForm textarea {
     width: 100%;
@@ -19,6 +20,7 @@
     border: none;
     font-weight: 600;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .commentForm button:hover {

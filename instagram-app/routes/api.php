@@ -19,7 +19,7 @@ use App\Http\Controllers\PostsController;
 // Route::middleware('auth:sanctum')->prefix('post')->group(function() {
 Route::prefix('post')->group(function() {
     Route::get('/', [PostsController::class, 'index']);
-    Route::get('/{id}', [PostsController::class, 'show']);
+    Route::get('/{id}', [PostsController::class, 'single']);
     Route::post('/', [PostsController::class, 'store']);
     Route::post('/comment/{id}', [PostsController::class, 'comment']);
     Route::post('/like/{id}', [PostsController::class, 'like']);

@@ -16,7 +16,7 @@ class PostsController extends Controller
     {
         try {
             $data = Post::with('likes')
-                        ->with('comments')
+                        // ->with('comments')
                         ->with('users:id,name,photo')
                         ->get();
 
@@ -28,6 +28,24 @@ class PostsController extends Controller
     }
 
     /**
+     * Display a single Post
+     */
+    public function single(string $id)
+    {
+        try {
+            $data = Post::where('id', $id)
+                        ->with('likes')
+                        ->with('comments')
+                        ->with('users:id,name,photo')
+                        ->get();
+
+            return $data;
+        } catch(\Throwable $e) {
+            return response('Įvyko klaida', 500);
+        }
+    }
+    
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -35,18 +53,6 @@ class PostsController extends Controller
         try {
             Post::create($request->all());
             return 'Viskas pavyko';
-        } catch(\Throwable $e) {
-            return response('Įvyko klaida', 500);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        try {
-            return Post::find($id);
         } catch(\Throwable $e) {
             return response('Įvyko klaida', 500);
         }
