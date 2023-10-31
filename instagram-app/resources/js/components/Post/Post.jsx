@@ -8,7 +8,7 @@ const Post = ({ data }) => {
 
     return (
         <div className="card">
-            {showCard && <SinglePost id={data.id} />}
+            {showCard && <SinglePost id={data.id} setShowCard={setShowCard} />}
             <div className="profile d-flex">
                 {data.users.photo && <img src={data.users.photo} />}
                 <div className="info">

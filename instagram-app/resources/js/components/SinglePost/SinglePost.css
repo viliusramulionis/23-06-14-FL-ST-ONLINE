@@ -1,5 +1,5 @@
 .singlePost .contents {
-    max-width: 764px;
+    max-width: 1024px;
     width: 100%;
     position: absolute;
     top: 50%;
@@ -22,4 +22,17 @@
     top: 0;
     left: 0;
     z-index: 1000;
+}
+
+.singlePost .postData {
+    padding: 1.5rem;
+}
+
+.singlePost .closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
 }

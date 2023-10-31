@@ -1,0 +1,23 @@
+.commentCard {
+    display: flex;
+    gap: 1rem;
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+
+.commentCard .profilePicture {
+    width: 32px;
+}
+
+.commentCard .profilePicture img {
+    border-radius: 50%;
+}
+
+.commentCard .userName {
+    margin-right: .3rem;
+}
+
+.commentCard .info {
+    font-size: 13px;
+    color: rgb(163, 163, 163);
+}

@@ -35,12 +35,24 @@ class PostsController extends Controller
         try {
             $data = Post::where('id', $id)
                         ->with('likes')
-                        ->with('comments')
+                        ->with(['comments' => function($q) {
+                            $q->with('user');
+                        }])
                         ->with('users:id,name,photo')
                         ->get();
+            
+            foreach($data[0]->comments as $index => $comment) {
+                if($comment->updated_at > $comment->created_at) 
+                    $data[0]->comments[$index]->edited = true;
+            }
+
+            // https://www.php.net/manual/en/function.date.php
+            // https://www.php.net/manual/en/function.strtotime.php
+            //return date('Y-m-d', strtotime($data[0]->created_at));
 
             return $data;
         } catch(\Throwable $e) {
+            return $e->getMessage();
             return response('Įvyko klaida', 500);
         }
     }
@@ -96,7 +108,7 @@ class PostsController extends Controller
                 'text' => $request->text
             ]);
         } catch(\Throwable $e) {
-
+            return $e->getMessage();
             return response('Įvyko klaida', 500);
         }
     }

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BiX } from "react-icons/bi";
 import CommentForm from '../CommentForm/CommentForm';
+import Comment from '../Comment/Comment';
 import './SinglePost.css';
 
 
-const SinglePost = ({ id }) => {
+const SinglePost = ({ id, setShowCard }) => {
     const [data, setData] = useState(false);
 
     useEffect(() => {
@@ -17,6 +19,12 @@ const SinglePost = ({ id }) => {
 
     return data && (
         <div className="singlePost">
+            <button 
+                className="closeButton"
+                onClick={() => setShowCard(false)}
+            >
+                <BiX style={{ width: 50, height: 50, color: 'white' }}/>
+            </button>
             <div className="contents">
                 <div className="photo">
                     <img src={data.file} alt={data.description} />
@@ -31,7 +39,7 @@ const SinglePost = ({ id }) => {
                     </div>
                     <div className="comments">
                         {data.comments.map((comment, index) => 
-                            <div key={index} className="comment">{comment.text}</div>
+                            <Comment key={index} data={comment} />
                         )}
                     </div>
                     <CommentForm />
