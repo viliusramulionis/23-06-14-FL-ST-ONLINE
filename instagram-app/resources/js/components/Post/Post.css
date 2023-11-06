@@ -25,3 +25,39 @@
 .card .description {
     padding: 1rem 0 0;
 }
+
+.card .resources {
+    width: 630px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card .resourcesList {
+    display: flex;
+    transition: transform .5s ease-in-out;
+}
+
+.card .resourcesList .item {
+    flex: 0 0 630px;
+}
+
+.card .resourcesPagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.card .resourcesPagination .item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.685);
+    cursor: pointer;
+}
+
+.card video {
+    max-width: 100%;
+}

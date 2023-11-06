@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\PostResource;
 
 class PostsController extends Controller
 {
@@ -17,6 +18,7 @@ class PostsController extends Controller
         try {
             $data = Post::with('likes')
                         // ->with('comments')
+                        ->with('resources')
                         ->with('users:id,name,photo')
                         ->get();
 
@@ -62,10 +64,30 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {   
+        $validated = $request->validate([
+            'description' => 'required|min:3|max:188',
+            'location' => 'required|max:50',
+            'resources.*' => 'required|mimes:jpg,jpeg,png,webp,mp4|max:5000000'
+        ]);
+
         try {
-            Post::create($request->all());
-            return 'Viskas pavyko';
+            $post = Post::create([
+                'description' => $request->description,
+                'location' => $request->location,
+                'user_id' => 1
+            ]);
+
+            foreach($request->file('resources') as $file) {
+                $filename = $file->store('public');
+
+                PostResource::create([
+                    'path' => $filename,
+                    'type' => $file->getMimeType() === 'video/mp4' ? 'video' : 'photo',
+                    'post_id' => $post->id
+                ]);
+            }
         } catch(\Throwable $e) {
+            return $e->getMessage();
             return response('Įvyko klaida', 500);
         }
     }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CommentForm from '../CommentForm/CommentForm';
 import SinglePost from '../SinglePost/SinglePost';
+import PostResources from '../PostResources/PostResources';
 import './Post.css';
 
 const Post = ({ data }) => {
@@ -16,7 +17,7 @@ const Post = ({ data }) => {
                     <div className="location">{data.location}</div>
                 </div>
             </div>
-            <img src={data.file} />
+            <PostResources data={data} />
             <div className="description">
                 {data.description}
             </div>
